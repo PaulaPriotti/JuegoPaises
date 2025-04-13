@@ -1,0 +1,19 @@
+{
+  "name": "juegopaises",
+  "version": "1.0.0",
+  "description": "trabajo practico integrador Programacion web II 2025 primer cuatri",
+  "main": "mainPaises.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PaulaPriotti/JuegoPaises.git"
+  },
+  "author": "Paula Helena Gonzalez Priotti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PaulaPriotti/JuegoPaises/issues"
+  },
+  "homepage": "https://github.com/PaulaPriotti/JuegoPaises#readme"
+}
