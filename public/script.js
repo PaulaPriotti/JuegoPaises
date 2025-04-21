@@ -3,7 +3,7 @@ const api = 'https://restcountries.com/v3.1/all';
 fetch(api)
   .then(res => res.json())
   .then(data => {
-    console.log(data); // Esto ahora sí te va a dar un array de países
+    console.log(data);
     const datoPais = data.map(pais => {
       return {
         nombre: pais.name.common,
@@ -11,7 +11,7 @@ fetch(api)
         bandera: pais.flags.png
       };
     });
-    console.log(datoPais); // Esto ahora sí te va a dar un array de países
+    console.log(datoPais); 
 })
   .catch(err => {
     console.log('Error: ' + err);
