@@ -14,11 +14,15 @@ body {
 
 main {
     flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 header {
     text-align: center;
     font-style: normal;
+    font-family: Georgia, serif;
     font-size: large;
 }
 
@@ -36,15 +40,18 @@ header {
     width: 300px;
     text-align: center;
     flex: 1;
+    font-family: Georgia, serif;
 }
 
 #pregunta-sec h2 {
     font-size: 1.2rem;
     margin-bottom: 20px;
+    font-family: Georgia, serif;
 }
 
 #opciones-sec {
     margin-bottom: 20px;
+    font-family: Georgia, serif;
 }
 
 button {
@@ -56,10 +63,12 @@ button {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-family: Georgia, serif;
 }
 
 #ranking-sec {
     font-size: 1.1rem;
+    font-family: Georgia, serif;
     font-weight: bold;
     color: #FF0B55;
     background-color: #fff;
