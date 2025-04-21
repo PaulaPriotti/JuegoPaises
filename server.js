@@ -1,3 +1,5 @@
+//Guardado de resultados, ranking, conexión con base de datos.
+
 const express = require('express');
 const app = express();
 const PORT = 3000;
