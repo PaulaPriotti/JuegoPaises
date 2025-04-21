@@ -1,5 +1,102 @@
-header{
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #FFDEDE;
+    color: black;
+}
+
+main {
+    flex: 1;
+}
+
+header {
     text-align: center;
     font-style: normal;
     font-size: large;
+}
+
+/* PALETA A USAR
+#000000
+#CF0F47
+#FF0B55
+#FFDEDE */
+
+#container {
+    background-color: #FF0B55;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    flex: 1;
+}
+
+#pregunta-sec h2 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+#opciones-sec {
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #CF0F47;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#ranking-sec {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #FF0B55;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+    margin-top: 20px;
+}
+
+#siguienteBoton {
+    background-color: #CF0F47;
+}
+
+button:hover {
+    background-color: #FFDEDE;
+}
+
+#listaRanking {
+    list-style: none;
+    padding: 0;
+}
+
+#listaRanking li {
+    background-color: #f8f8f8;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+footer {
+    padding: 15px 0;
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    font-size: 0.9rem;
+    border-top: 2px solid #FF0B55;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
 }
