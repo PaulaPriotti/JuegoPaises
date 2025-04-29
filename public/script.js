@@ -8,26 +8,6 @@ let pregContestadas = 0;
 let respCorrectas = 0;
 let respIncorrectas = 0;
 
-// fetch(api)
-//   .then(res => res.json())
-//   .then(data => {
-//     console.log(data);
-//     const datoPais = data.map(pais => {
-//       nombre = pais.name.common;
-//       capital = pais.capital ? pais.capital[0] : 'No tiene capital';
-//       frontera = pais.borders ? pais.borders.join(', ') : 'No tiene fronteras'; //la consigna pide la cantidad de fronteras, pero la API no devuelve la cantidad, sino los nombres de los países que limitan
-//       return {
-//         nombre: nombre,
-//         capital: capital,
-//         frontera: frontera
-//       };
-//     });
-//     console.log(datoPais); 
-// })
-//   .catch(err => {
-//     console.log('Error: ' + err);
-// });
-
 async function cargarPaises() {
     const response = await fetch(api);
     const data = await response.json();
@@ -36,17 +16,17 @@ async function cargarPaises() {
 }
 
 function obtenerPreguntas(){
-    const tipoPregunta = Math.floor(Math.random * 3);
-    const paisesRandom = paises[Math.floor(Math.random() * paises.length)];
+    const tipoPregunta = Math.floor(Math.random()*3);
+    const paisRandom = paises[Math.floor(Math.random() * paises.length)];
 
     let pregunta = "";
     let respuestaCorrecta = "";
     let opciones = new Set();
 
   //pregunta capital
-    if(tipoPregunta === 0 && paisesRandom.capital && paisesRandom.capital.length > 0){
+    if(tipoPregunta === 0 && paisRandom.capital && paisRandom.capital.length > 0){
       pregunta = `¿Cuál es el país de la siguiente ciudad capital: ${paisRandom.capital[0]}?`;
-      respuestaCorrecta = paisesRandom.name.common;
+      respuestaCorrecta = paisRandom.name.common;
       opciones.add(respuestaCorrecta);
 
       while (opciones.size < 4) {
@@ -126,5 +106,29 @@ function verificarRta(seleccion, correcta, tipoPregunta){
 
   document.getElementById("puntaje").textContent = `Puntaje: ${puntaje}`;
   mostrarPregunta();
+}
+
+function finDelJuego(){
+  const resultadoFinal =`
+  <h2>Fin del juego</h2>
+  <p>Tu puntaje final es: ${puntaje}</p>
+  <p>Respuestas correctas: ${respCorrectas}</p>
+  <p>Respuestas incorrectas: ${respIncorrectas}</p>`;
+  document.getElementById("pregunta-sec").innerHTML = resultadoFinal;
+  document.getElementById("opciones-sec").innerHTML = ""; // Limpiar opciones
+}
+
+async function iniciarJuego() {
+  await cargarPaises();
+  puntaje = 0;
+  pregContestadas = 0;
+  respCorrectas = 0;
+  respIncorrectas = 0;
+  document.getElementById("puntaje").textContent = "Puntaje: 0";
+  mostrarPregunta();
+}
+
+function volver() {
+  iniciarJuego();
 }
   
