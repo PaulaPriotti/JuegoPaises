@@ -10,7 +10,7 @@ body {
     justify-content: space-between;
     background-image:
     linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
-    url('imagen/mapaConColor.jpg');
+    url('imagen/mapamundi-colores.jpg');
     background-size: cover;      /* Para que cubra toda la pantalla */
     background-position: center; /* Centrado */
     background-repeat: no-repeat; /* Que no se repita */
@@ -24,19 +24,20 @@ main {
     align-items: center;
 }
 
-/* PALETA A USAR
-#000000
-#CF0F47
-#FF0B55
-#FFDEDE */
+/* PALETA A USAR (azul y un poco de verde)
+#60B5FF rgb(96, 181, 255)
+#AFDDFF rgb(175, 221, 255)
+#FFECDB rgb(255, 236, 219)
+#FF9149 rgb(255, 145, 73)
+*/
 
 #container {
-    background-color: #FF0B55;
+    background-color: #ffce74;
     padding: 30px 20px;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     width: 90%;
-    max-width: 400px;
+    max-width: 600px;
     text-align: center;
     font-family: Georgia, serif;
 }
@@ -56,7 +57,7 @@ section {
     width: 90%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 2px solid #CF0F47;
+    border: 2px solid #faa301;
     border-radius: 6px;
     font-family: Georgia, serif;
     font-size: 1rem;
@@ -79,7 +80,7 @@ section {
 }
 
 button {
-    background-color: #CF0F47;
+    background-color: #04D912;
     color: white;
     border: none;
     padding: 12px 24px;
@@ -93,8 +94,8 @@ button {
 }
 
 button:hover {
-    background-color: #FFDEDE;
-    color: #000;
+    background-color: #63f86d;
+    color: white;
 }
 
 #ranking-sec {
@@ -106,15 +107,15 @@ button:hover {
     margin-top: 20px;
     font-weight: bold;
     font-size: 1.2rem;
-    color: #000;
+    color: black;
 }
 
 footer {
-    padding: 15px 0;
+    padding: 10px 0;
     text-align: center;
-    background-color: #333;
-    color: #fff;
+    background-color: #D9CF41;
+    color: white;
     font-size: 0.9rem;
-    border-top: 2px solid #FF0B55;
+    border-top: 2px solid #F2B33D;
     box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
 }
