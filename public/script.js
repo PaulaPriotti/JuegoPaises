@@ -88,7 +88,7 @@ async function mostrarPregunta(){
     };
     opcionesSec.appendChild(boton);
   });
-
+  document.getElementById("siguiente-sec").style.display = "none";
 }
 
 function verificarRta(seleccion, correcta, tipoPregunta){
@@ -104,7 +104,7 @@ function verificarRta(seleccion, correcta, tipoPregunta){
     alert(`Respuesta incorrecta. La respuesta correcta era: ${correcta}`);
   }
 
-  document.getElementById("puntaje").textContent = `Puntaje: ${puntaje}`;
+  document.getElementById("puntaje").textContent = puntaje;
   mostrarPregunta();
 }
 
@@ -124,7 +124,10 @@ async function iniciarJuego() {
   pregContestadas = 0;
   respCorrectas = 0;
   respIncorrectas = 0;
-  document.getElementById("puntaje").textContent = "Puntaje: 0";
+  document.getElementById("puntaje").textContent = puntaje;
+  document.getElementById("inicio-sec").style.display = "none";
+  document.getElementById("juego-sec").style.display = "block";
+  document.getElementById("ranking-sec").style.display = "none";
   mostrarPregunta();
 }
 
