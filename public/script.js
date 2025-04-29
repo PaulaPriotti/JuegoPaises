@@ -37,7 +37,7 @@ function obtenerPreguntas(){
       }
       // Pregunta de Bandera
     } else if (tipoPregunta === 1 && paisRandom.flags && paisRandom.flags.png) {
-      pregunta = `El país ${paisRandom.name.common} está representado por la siguiente bandera:<br><img src="${paisRandom.flags.png}" alt="Bandera" style="width: 100px;">`;
+      pregunta = `El país ${paisRandom.name.common} está representado por la siguiente bandera:<br><br><img src="${paisRandom.flags.png}" alt="Bandera" style="width: 100px;">`;
       respuestaCorrecta = paisRandom.name.common;
       opciones.add(respuestaCorrecta);
   
