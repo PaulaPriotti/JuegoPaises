@@ -76,34 +76,55 @@ function obtenerPreguntas(){
       const numRandom = Math.floor(Math.random() * 10).toString();
       opciones.add(numRandom);
     }
-  }
-
-}
-// let puntaje = 0;
-
-// async function proximaPregunta(){
-//     const preg = await obtenerPreguntas();
-
-//     document.getElementById("pregunta").textContent = preg.pregunta;
-
-//     const opcionesSec = document.getElementById("opciones-sec");
-//     opcionesSec.innerHTML = "";
-//     preg.opciones.forEach(op => {
-//       const boton = document.createElement("button");
-//       boton.textContent = op;
-//       boton.onclick = () => verificarRta(op, preg.respuestaCorrecta);
-//       opcionesSec.appendChild(boton);
-
-//     });
-// }
-
-function verificarRta(seleccion, correcta){
-  if(seleccion == correcta){
-    puntaje += 3;
-    alert("¡Correcto!")
   } else {
-    alert( `¡Incorrecto! La respuesta correcta es ${correcta}`);
+    return obtenerPreguntas(); //cuando no se cumple la condicion
+  }
+  return {
+    pregunta,
+    opciones: Array.from(opciones).sort(() => Math.random() - 0.5), // Mezclar opciones
+    respuestaCorrecta,
+    tipoPregunta
+  };
+}
+
+//mostrar pregunta
+function mostrarPregunta(){
+  if (pregContestadas >= 10) {
+    finDelJuego();
+    return;
   }
 
-  document.getElementById("puntaje").textContent = puntaje;
+  const pregunta = obtenerPreguntas();
+  const preguntaSec = document.getElementById("pregunta-sec");
+  const opcionesSec = document.getElementById("opciones-sec");
+  preguntaSec.innerHTML = pregunta.pregunta;
+  opcionesSec.innerHTML = ""; // Limpiar opciones anteriores
+
+  pregunta.opciones.forEach(opcion => {
+    const boton = document.createElement("button");
+    boton.textContent = opcion;
+    boton.onclick = () => {
+      verificarRta(opcion, pregunta.respuestaCorrecta, pregunta.tipoPregunta);
+    };
+    opcionesSec.appendChild(boton);
+  });
+
 }
+
+function verificarRta(seleccion, correcta, tipoPregunta){
+  pregContestadas++;
+  if (seleccion === correcta){
+    respCorrectas++;
+    if (tipoPregunta === 0) puntaje += 3; // Capital
+    if (tipoPregunta === 1) puntaje += 5; // Bandera
+    if (tipoPregunta === 2) puntaje += 3; // Fronteras
+    alert("¡Respuesta correcta!");
+  } else{
+    respIncorrectas++;
+    alert(`Respuesta incorrecta. La respuesta correcta era: ${correcta}`);
+  }
+
+  document.getElementById("puntaje").textContent = `Puntaje: ${puntaje}`;
+  mostrarPregunta();
+}
+  
