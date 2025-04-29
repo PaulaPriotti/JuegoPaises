@@ -68,13 +68,13 @@ function obtenerPreguntas(){
 }
 
 //mostrar pregunta
-function mostrarPregunta(){
+async function mostrarPregunta(){
   if (pregContestadas >= 10) {
     finDelJuego();
     return;
   }
 
-  const pregunta = obtenerPreguntas();
+  const pregunta = await obtenerPreguntas();
   const preguntaSec = document.getElementById("pregunta-sec");
   const opcionesSec = document.getElementById("opciones-sec");
   preguntaSec.innerHTML = pregunta.pregunta;

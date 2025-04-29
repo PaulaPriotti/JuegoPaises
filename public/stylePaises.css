@@ -24,13 +24,6 @@ main {
     align-items: center;
 }
 
-header {
-    text-align: center;
-    font-style: normal;
-    font-family: Georgia, serif;
-    font-size: large;
-}
-
 /* PALETA A USAR
 #000000
 #CF0F47
@@ -39,13 +32,39 @@ header {
 
 #container {
     background-color: #FF0B55;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 400px;
     text-align: center;
-    flex: 1;
     font-family: Georgia, serif;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+#inicio-sec {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#nombreJugador {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #CF0F47;
+    border-radius: 6px;
+    font-family: Georgia, serif;
+    font-size: 1rem;
+}
+
+#nombreJugador, button {
+    display: block;
+    margin: 10px auto;
 }
 
 #pregunta-sec h2 {
@@ -63,46 +82,31 @@ button {
     background-color: #CF0F47;
     color: white;
     border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-family: Georgia, serif;
-}
-
-#ranking-sec {
-    font-size: 1.1rem;
-    font-family: Georgia, serif;
-    font-weight: bold;
-    color: #FF0B55;
-    background-color: #fff;
-    padding: 20px;
+    padding: 12px 24px;
+    margin: 8px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 300px;
-    margin-top: 20px;
-}
-
-#siguienteBoton {
-    background-color: #CF0F47;
+    cursor: pointer;
+    font-family: Georgia, serif;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
 button:hover {
     background-color: #FFDEDE;
+    color: #000;
 }
 
-#listaRanking {
-    list-style: none;
-    padding: 0;
+#ranking-sec {
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
-#listaRanking li {
-    background-color: #f8f8f8;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 4px;
+#resultado-sec {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #000;
 }
 
 footer {

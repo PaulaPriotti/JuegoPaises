@@ -10,28 +10,31 @@
     <!-- Titulo -->
      <header>Bienvenidos a juego de paises</header>
      <main>
-        <div id="container">
-        <section id="pregunta-sec">
+        <div id="container"></div>
+        <section id="inicio-sec">
+            <input type="text" id="nombreJugador" placeholder="Ingresá tu nombre" />
+            <button onclick="iniciarJuego()">Iniciar Juego</button>
+        </section>
+        <section id="juego-sec" style="display: none;">
+            <section id="pregunta-sec">
             <h2 id="pregunta"></h2>
         </section>
-        <section id="opciones-sec">
-        </section>
-        <section id="siguiente-sec">
-            <button id="siguienteBoton" onclick="mostrarPregunta()">Siguiente pregunta</button>
+        <section id="opciones-sec"></section>
+        <section id="siguiente-sec" style="display: none;">
+          <button onclick="mostrarPregunta()">Siguiente pregunta</button>
         </section>
         <section id="resultado-sec">
-            <p>Puntaje: <span id="puntaje">0</span></p>
+          <p>Puntaje: <span id="puntaje">0</span></p>
         </section>
-        </div>
-     </main>
-
-     <!-- Ranking final -->
-     <section id="ranking-sec">
+      </section>
+      <section id="ranking-sec" style="display: none;">
         <h2>Ranking</h2>
         <ul id="listaRanking"></ul>
         <button onclick="volver()">Volver a jugar</button>
-    </section>
-    
+        <button onclick="verRanking()">Ver Ranking</button>
+      </section>
+        </div>
+     </main>    
      <footer>
         Paula Helena Gonzalez Priotti, 2025
      </footer>
