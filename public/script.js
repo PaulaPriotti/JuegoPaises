@@ -7,6 +7,8 @@ let puntaje = 0;
 let pregContestadas = 0;
 let respCorrectas = 0;
 let respIncorrectas = 0;
+let inicioTiempo;
+let finTiempo;
 
 async function cargarPaises() {
     const response = await fetch(api);
@@ -109,13 +111,39 @@ function verificarRta(seleccion, correcta, tipoPregunta){
 }
 
 function finDelJuego(){
+  const finTiempo = Date.now();
+  const duracionSegundos = Math.round((tiempoFin - tiempoInicio) / 1000);
+  const promedio = (duracionSegundos / 10).toFixed(2);
   const resultadoFinal =`
-  <h2>Fin del juego</h2>
-  <p>Tu puntaje final es: ${puntaje}</p>
-  <p>Respuestas correctas: ${respCorrectas}</p>
-  <p>Respuestas incorrectas: ${respIncorrectas}</p>`;
+    <h2>Fin del juego</h2>
+    <p>Tu puntaje final es: ${puntaje}</p>
+    <p>Respuestas correctas: ${respCorrectas}</p>
+    <p>Respuestas incorrectas: ${respIncorrectas}</p>
+    <p>Tiempo promedio por pregunta: ${promedio} segundos`;
   document.getElementById("pregunta-sec").innerHTML = resultadoFinal;
-  document.getElementById("opciones-sec").innerHTML = ""; // Limpiar opciones
+  document.getElementById("opciones-sec").innerHTML = "";
+
+  //envio datos de partida al servidor
+  const nombreJugador = document.getElementById("nombreJugador").value || "Anonimo";
+  const partida = {
+    nombre : nombreJugador,
+    puntaje,
+    respCorrectas,
+    respIncorrectas,
+    duracionSegundos,
+    promedio : Number(promedio)
+  }
+
+  fetch('/guardarJuego', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(partida)
+  })
+    .then(res => res.json())
+    .then(data => console.log('Partida guardada:', data))
+    .catch(err => console.error('Error al guardar la partida:', err));
 }
 
 async function iniciarJuego() {
@@ -124,6 +152,7 @@ async function iniciarJuego() {
   pregContestadas = 0;
   respCorrectas = 0;
   respIncorrectas = 0;
+  inicioTiempo = Date.now();
   document.getElementById("puntaje").textContent = puntaje;
   document.getElementById("inicio-sec").style.display = "none";
   document.getElementById("juego-sec").style.display = "block";
@@ -134,4 +163,4 @@ async function iniciarJuego() {
 function volver() {
   iniciarJuego();
 }
-  
+
