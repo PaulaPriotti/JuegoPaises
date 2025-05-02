@@ -17,6 +17,20 @@ async function cargarPaises() {
     // console.log(paises);
 }
 
+async function iniciarJuego() {
+  await cargarPaises();
+  puntaje = 0;
+  pregContestadas = 0;
+  respCorrectas = 0;
+  respIncorrectas = 0;
+  inicioTiempo = Date.now();
+  document.getElementById("puntaje").textContent = puntaje;
+  document.getElementById("inicio-sec").style.display = "none";
+  document.getElementById("juego-sec").style.display = "block";
+  document.getElementById("ranking-sec").style.display = "none";
+  mostrarPregunta();
+}
+
 function obtenerPreguntas(){
     const tipoPregunta = Math.floor(Math.random()*3);
     const paisRandom = paises[Math.floor(Math.random() * paises.length)];
@@ -39,14 +53,15 @@ function obtenerPreguntas(){
       }
       // Pregunta de Bandera
     } else if (tipoPregunta === 1 && paisRandom.flags && paisRandom.flags.png) {
-      pregunta = `El país ${paisRandom.name.common} está representado por la siguiente bandera:<br><br><img src="${paisRandom.flags.png}" alt="Bandera" style="width: 100px;">`;
-      respuestaCorrecta = paisRandom.name.common;
-      opciones.add(respuestaCorrecta);
+      const mostrarNombreReal = Math.random() < 0.5;
+      const nombreMostrado = mostrarNombreReal
+          ? paisRandom.name.common
+          : paises[Math.floor(Math.random() * paises.length)].name.common;
+
+      pregunta = `¿El país ${nombreMostrado} esta representado por la siguiente bandera?<br><br><img src="${paisRandom.flags.png}" alt="Bandera" style="width: 100px;">`;
+      respuestaCorrecta = mostrarNombreReal ? "Sí" : "No";
+      opciones = new Set(["Sí", "No"]);
   
-      while (opciones.size < 4) {
-          const pais = paises[Math.floor(Math.random() * paises.length)];
-          if (pais.name.common !== respuestaCorrecta) opciones.add(pais.name.common);
-      }
       //pregunta de frontera
   } else if (tipoPregunta === 2 && paisRandom.borders && paisRandom.borders.length > 0){
     const cantidadFronteras = paisRandom.borders ? paisRandom.borders.length : 0;
@@ -79,47 +94,48 @@ async function mostrarPregunta(){
   const pregunta = await obtenerPreguntas();
   const preguntaSec = document.getElementById("pregunta-sec");
   const opcionesSec = document.getElementById("opciones-sec");
+  const mensajeSec = document.getElementById("mensaje-sec");
+  mensajeSec.innerHTML = "";
   preguntaSec.innerHTML = pregunta.pregunta;
-  opcionesSec.innerHTML = ""; // Limpiar opciones anteriores
+  opcionesSec.innerHTML = "";
 
   pregunta.opciones.forEach(opcion => {
     const boton = document.createElement("button");
     boton.textContent = opcion;
     boton.onclick = () => {
-      verificarRta(opcion, pregunta.respuestaCorrecta, pregunta.tipoPregunta);
+      verificarRta(opcion, pregunta.respuestaCorrecta, mensajeSec, boton);
+      boton.disabled = true;
     };
     opcionesSec.appendChild(boton);
   });
-  document.getElementById("siguiente-sec").style.display = "none";
 }
 
-function verificarRta(seleccion, correcta, tipoPregunta){
+function verificarRta(seleccion, correcta, mensaje, boton){
   pregContestadas++;
   if (seleccion === correcta){
     respCorrectas++;
-    if (tipoPregunta === 0) puntaje += 3; // Capital
-    if (tipoPregunta === 1) puntaje += 5; // Bandera
-    if (tipoPregunta === 2) puntaje += 3; // Fronteras
-    alert("¡Respuesta correcta!");
-  } else{
+    mensaje.innerHTML = `¡Respuesta correcta!`;
+  } else {
     respIncorrectas++;
-    alert(`Respuesta incorrecta. La respuesta correcta era: ${correcta}`);
+    mensaje.innerHTML = `¡Respuesta incorrecta! La respuesta correcta es ${correcta}`;
   }
 
   document.getElementById("puntaje").textContent = puntaje;
-  mostrarPregunta();
+  boton.disabled = true;
+  setTimeout(mostrarPregunta, 1000);
 }
 
 function finDelJuego(){
   const finTiempo = Date.now();
-  const duracionSegundos = Math.round((tiempoFin - tiempoInicio) / 1000);
-  const promedio = (duracionSegundos / 10).toFixed(2);
+  const duracionTotal = (finTiempo - inicioTiempo) / 1000; // en segundos
+  const promedio = (duracionTotal / pregContestadas).toFixed(2)
   const resultadoFinal =`
     <h2>Fin del juego</h2>
     <p>Tu puntaje final es: ${puntaje}</p>
     <p>Respuestas correctas: ${respCorrectas}</p>
     <p>Respuestas incorrectas: ${respIncorrectas}</p>
-    <p>Tiempo promedio por pregunta: ${promedio} segundos`;
+    <p>Tiempo promedio por pregunta: ${promedio} segundos
+    <p>Duración total: ${duracionTotal.toFixed(2)} segundos</p>`;
   document.getElementById("pregunta-sec").innerHTML = resultadoFinal;
   document.getElementById("opciones-sec").innerHTML = "";
 
@@ -130,7 +146,7 @@ function finDelJuego(){
     puntaje,
     respCorrectas,
     respIncorrectas,
-    duracionSegundos,
+    duracionSegundos: duracionTotal,
     promedio : Number(promedio)
   }
 
@@ -144,20 +160,6 @@ function finDelJuego(){
     .then(res => res.json())
     .then(data => console.log('Partida guardada:', data))
     .catch(err => console.error('Error al guardar la partida:', err));
-}
-
-async function iniciarJuego() {
-  await cargarPaises();
-  puntaje = 0;
-  pregContestadas = 0;
-  respCorrectas = 0;
-  respIncorrectas = 0;
-  inicioTiempo = Date.now();
-  document.getElementById("puntaje").textContent = puntaje;
-  document.getElementById("inicio-sec").style.display = "none";
-  document.getElementById("juego-sec").style.display = "block";
-  document.getElementById("ranking-sec").style.display = "none";
-  mostrarPregunta();
 }
 
 function volver() {

@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "nombre": "Paula",
+    "puntaje": 0,
+    "respCorrectas": 3,
+    "respIncorrectas": 7,
+    "duracionSegundos": 34.205,
+    "promedio": 3.42
+  }
+]
