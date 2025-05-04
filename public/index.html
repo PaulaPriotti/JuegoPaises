@@ -7,33 +7,49 @@
     <title>Juego de paises</title>
 </head>
 <body>
-    <!-- Titulo -->
-     <header>Bienvenidos a juego de paises</header>
      <main>
-        <div id="container">
-        <section id="inicio-sec">
-            <input type="text" id="nombreJugador" placeholder="Ingresá tu nombre" />
-            <button id="botonIniciar" onclick="iniciarJuego()">Iniciar</button>
-            <button onclick="verRanking()">Ver Ranking</button>
+      <div id="container">
+        <!-- Pantalla de inicio -->
+        <div id="inicio">
+          <button id="botonComenzar">Comenzar</button>
+        </div>
+
+        <!-- Ingresar datos e inicar el juego -->
+        <section id="nombre-sec" style="display: none;">
+          <label for="nombre">Nombre del jugador</label>
+          <input type="text" id="input-nombre" placeholder="Coloque su nombre para jugar"/>
+          <button id="botonIniciar">Iniciar juego</button>
         </section>
-        <section id="juego-sec" style="display: none;">
-            <section id="pregunta-sec">
-            <h2 id="pregunta"></h2>
+
+        <!-- Preguntas y opciones -->
+        <section id="pregunta-sec" style="display: none;">
+          <h2 id="pregunta"></h2>
+          <div id="opciones"></div>
         </section>
-        <section id="opciones-sec"></section>
-        <section id="mensaje-sec" style="margin-top: 10px;"></section>
+
+        <!-- Mensaje de respuesta correcta o incorrecta -->
+        <section id="resultado-sec" style="display: none;">
+          <p id="mensaje"></p>
+          <button id="botonSiguiente">Siguiente pregunta</button>
         </section>
-        <section id="resultado-sec">
-            <p><strong>Puntaje:</strong> <span id="puntaje">Puntaje: 0</span></p>
+
+        <!-- Resumen de la partida -->
+        <section id="resumen-sec" style="display: none;">
+          <h2>¡Se ha terminado el juego!</h2>
+          <p id="resumen-puntaje"></p>
+          <p id="resumen-correctas"></p>
+          <p id="resumen-incorrectas"></p>
+          <p id="resumen-tiempo"></p>
+          <p id="resumen-promedio-tiempo"></p>
+          <button id="botonVolver">Volver a jugar</button>
         </section>
-      </section>
-      <section id="ranking-sec" style="display: none;">
-        <h2>Ranking</h2>
-        <ul id="listaRanking"></ul>
-        <button onclick="volver()">Volver a jugar</button>
-        
-      </section>
-    </div>
+
+        <!-- Ranking -->
+        <section id="ranking-sec">
+          <h2>Ranking</h2>
+          <ul id="ranking-lista"></ul>
+        </section>
+      </div>
      </main>    
      <footer>
         Paula Helena Gonzalez Priotti, 2025

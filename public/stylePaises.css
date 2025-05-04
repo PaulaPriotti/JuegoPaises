@@ -42,6 +42,10 @@ main {
     font-family: Georgia, serif;
 }
 
+#puntaje {
+    display: none;
+}  
+
 section {
     margin-bottom: 20px;
 }

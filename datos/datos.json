@@ -6,5 +6,49 @@
     "respIncorrectas": 7,
     "duracionSegundos": 34.205,
     "promedio": 3.42
+  },
+  {
+    "nombre": "Paula",
+    "puntaje": 0,
+    "respCorrectas": 2,
+    "respIncorrectas": 8,
+    "duracionSegundos": 9.667,
+    "promedio": 0.97
+  },
+  {
+    "nombre": "Paula",
+    "puntaje": 0,
+    "respCorrectas": 2,
+    "respIncorrectas": 8,
+    "duracionSegundos": 10.575,
+    "promedio": 1.06
+  },
+  {
+    "nombre": "Paula",
+    "puntaje": 0,
+    "respCorrectas": 4,
+    "respIncorrectas": 6,
+    "duracionSegundos": 16.645,
+    "promedio": 1.66
+  },
+  {
+    "nombre": "Anonimo",
+    "puntaje": 0,
+    "tiempo": 0
+  },
+  {
+    "nombre": "Anonimo",
+    "puntaje": 0,
+    "tiempo": 0
+  },
+  {
+    "nombre": "Paula",
+    "puntaje": 0,
+    "tiempo": 0
+  },
+  {
+    "nombre": "Paula",
+    "puntaje": 0,
+    "tiempo": 0
   }
 ]
