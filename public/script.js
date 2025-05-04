@@ -1,6 +1,18 @@
 //Preguntas, botones, puntaje
 
 const api = 'https://restcountries.com/v3.1/all';
+let paises = [];
+
+// Cargar los países al inicio
+fetch(api)
+  .then(response => response.json())
+  .then(data => {
+    paises = data; 
+    console.log("Países cargados:", paises);
+  })
+  .catch(error => {
+    console.error("Error al cargar los países:", error);
+  });
 
 let nombreJugador = '';
 let puntaje = 0;
@@ -9,6 +21,7 @@ let respuestasCorrectas = 0;
 let respuestasIncorrectas = 0;
 let preguntasRespondidas = 0;
 let tipoPreguntaActual = null;
+let respuestaCorrecta = ""; 
 
 const botonComenzar = document.getElementById("botonComenzar");
 const nombreSec = document.getElementById("nombre-sec");
@@ -36,24 +49,28 @@ botonComenzar.addEventListener("click", () => {
 
 //Iniciar el juego
 botonIniciar.addEventListener("click", () => {
+  if (paises.length === 0) {
+    alert("Los datos aún se están cargando. Por favor, espera.");
+    return;
+  }
   nombreJugador = inputNombre.value.trim() || "Anónimo";
   nombreSec.style.display = "none";
   preguntaSec.style.display = "block";
-  puntaje = 0;
-  respuestasCorrectas = 0;
-  respuestasIncorrectas = 0;
   tiempoInicio = Date.now();
   obtenerPregunta();
 });
 
-//Obtengo y muestro la pregunta (antes tenia una funcion para cada pregunta)
-function obtenerPregunta(){
-    const tipoPregunta = Math.floor(Math.random()*3);
-    const paisRandom = paises[Math.floor(Math.random() * paises.length)];
+function obtenerPregunta() {
+  if (preguntasRespondidas >= 10) {
+    mostrarResumen();
+    return;
+  }
 
-    let pregunta = "";
-    let respuestaCorrecta = "";
-    let opciones = new Set();
+  const tipoPregunta = Math.floor(Math.random()*3);
+  const paisRandom = paises[Math.floor(Math.random() * paises.length)];
+
+  let pregunta = "";
+  let opciones = new Set();
 
   //pregunta capital
     if(tipoPregunta === 0 && paisRandom.capital && paisRandom.capital.length > 0){
@@ -77,7 +94,7 @@ function obtenerPregunta(){
       pregunta = `¿El país ${nombreMostrado} esta representado por la siguiente bandera?<br><br><img src="${paisRandom.flags.png}" alt="Bandera" style="width: 100px;">`;
       respuestaCorrecta = mostrarNombreReal ? "Sí" : "No";
       opciones = new Set(["Sí", "No"]);
-  
+
       //pregunta de frontera
   } else if (tipoPregunta === 2 && paisRandom.borders && paisRandom.borders.length > 0){
     const cantidadFronteras = paisRandom.borders ? paisRandom.borders.length : 0;
@@ -89,29 +106,29 @@ function obtenerPregunta(){
       const numRandom = Math.floor(Math.random() * 10).toString();
       opciones.add(numRandom);
     }
-  } else {
-    tipoPreguntaActual = tipoPregunta;
+
+    } else {
     return obtenerPregunta(); //cuando no se cumple la condicion
   }
   //mostramos la pregunta y opciones
+  tipoPreguntaActual = tipoPregunta;
   textoPregunta.innerHTML = pregunta;
   opcionesContenedor.innerHTML = "";
   Array.from(opciones).sort(() => Math.random() - 0.5).forEach(opcion => {
-    const btn = document.createElement("button");
-    btn.textContent = opcion;
-    btn.addEventListener("click", () => verificarRta(opcion));
-    opcionesContenedor.appendChild(btn);
+    const boton = document.createElement("button");
+    boton.textContent = opcion;
+    boton.addEventListener("click", () => verificarRta(opcion));
+    opcionesContenedor.appendChild(boton);
   });
 }
 
 function verificarRta(respuestaSeleccionada){
-    seccionResultado.style.display = "block";
-    seccionPregunta.style.display = "none";
+    resultadoSec.style.display = "block";
+    preguntaSec.style.display = "none";
     preguntasRespondidas++;
   
     if (respuestaSeleccionada === respuestaCorrecta) {
       mensaje.textContent = "¡Correcto!";
-  
       // Asignar puntaje según el tipo de pregunta
       if (tipoPreguntaActual === 0) {
         puntaje += 3; // capital
@@ -120,23 +137,19 @@ function verificarRta(respuestaSeleccionada){
       } else if (tipoPreguntaActual === 2) {
         puntaje += 3; // fronteras
       }
-
       respuestasCorrectas++;
     } else {
       mensaje.textContent = `Incorrecto. La respuesta correcta era: ${respuestaCorrecta}`;
+      respuestasIncorrectas++;
+      
     }  
 }
 
 //se agrega momentaneamente un boton para continuar
 botonSiguiente.addEventListener("click", () => {
   resultadoSec.style.display = "none";
-
-  if (preguntasRespondidas < 10) {
-    seccionPregunta.style.display = "block";
-    obtenerPregunta();
-  } else {
-    mostrarResumen();
-  }
+  preguntaSec.style.display = "block";
+  obtenerPregunta();
 });
 
 function mostrarResumen() {
@@ -145,16 +158,22 @@ function mostrarResumen() {
   resumenSec.style.display = "block";
   resumenPuntaje.textContent = `Puntaje: ${puntaje}`;
   resumenTiempo.textContent = `Tiempo: ${tiempoFinal} segundos`;
+  resumenPromedioTiempo.textContent = `Promedio de tiempo por pregunta: ${promedioTiempo} segundos`;
   resumenCorrectas.textContent = `Respuestas correctas: ${respuestasCorrectas}/10`;
   resumenIncorrectas.textContent = `Respuestas incorrectas: ${respuestasIncorrectas}`;
 
   guardarPartida(nombreJugador, puntaje, tiempoFinal); // Guardar partida
-  obtenerRanking(); // Reiniciar preguntas
+  verRanking(); // Reiniciar preguntas
 };
 
 botonVolver.addEventListener("click", () => {
   resumenSec.style.display = "none";
-  document.getElementById("inicio").style.display = "block";
+  document.getElementById("inicio-sec").style.display = "block";
+  inputNombre.value = "";
+  puntaje = 0;
+  respuestasCorrectas = 0;
+  respuestasIncorrectas = 0;
+  preguntasRespondidas = 0;
 });  
 
 function guardarPartida(nombre, puntaje, tiempo) {
@@ -169,14 +188,12 @@ function guardarPartida(nombre, puntaje, tiempo) {
       tiempo
     })
   })
-  // .then(response => response.json())
-  // .then(data => {
-  //   console.log("Partida guardada:", data);
-  //   mostrarResultado(); // o lo que uses para mostrar resultados
-  // })
-  // .catch(error => {
-  //   console.error("Error al guardar la partida:", error);
-  // });
+  .then(res => res.json())
+  .then(data => console.log("Partida guardada:", data))
+  .catch(error => {
+    console.error("Error al guardar la partida:", error);
+    alert("No se pudo guardar la partida.");
+  });
 }
 
 function verRanking() {
@@ -184,10 +201,17 @@ function verRanking() {
     .then(res => res.json())
     .then(ranking => {
       rankingLista.innerHTML = "";
+      if (!Array.isArray(ranking)) throw new Error("Ranking inválido");
       ranking.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = `${item.nombre} - Puntaje: ${item.puntaje} - Tiempo: ${item.tiempo}s`;
-        rankingLista.appendChild(li);
+        if (item.nombre && item.puntaje !== undefined && item.tiempo !== undefined) {
+          const li = document.createElement("li");
+          li.textContent = `${item.nombre} - Puntaje: ${item.puntaje} - Tiempo: ${item.tiempo}s`;
+          rankingLista.appendChild(li);
+        }
       });
+    })
+    .catch(error => {
+      console.error("Error al obtener el ranking:", error);
+      rankingLista.innerHTML = "<li>Error al cargar el ranking.</li>";
     });
 }

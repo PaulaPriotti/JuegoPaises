@@ -1,6 +1,16 @@
 [
   {
     "nombre": "Paula",
+    "puntaje": 13,
+    "tiempo": 10
+  },
+  {
+    "nombre": "Paula",
+    "puntaje": 13,
+    "tiempo": 28
+  },
+  {
+    "nombre": "Paula",
     "puntaje": 0,
     "respCorrectas": 3,
     "respIncorrectas": 7,
