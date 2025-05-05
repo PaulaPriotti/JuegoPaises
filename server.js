@@ -8,7 +8,10 @@ const PORT = process.env.PORT || 3000;
 const cors = require('cors');
 const dataPath = path.join(__dirname, 'data.json');
 
-app.use(cors());
+
+app.use(cors({
+    origin: 'https://juego-paises.vercel.app/'
+}));
 app.use(express.json());
 app.use(express.static('public')); // si tu frontend está en /public
 

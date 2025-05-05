@@ -235,7 +235,6 @@ function volverAlInicio() {
   inputNombre.value = "";
   botonComenzar.style.display = "block";
   botonRanking.style.display = "block";
-
   botonVolver.style.display = "none";
   botonVolverInicio.style.display = "none";
 }

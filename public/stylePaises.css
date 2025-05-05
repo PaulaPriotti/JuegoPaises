@@ -11,9 +11,9 @@ body {
     background-image:
     linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
     url('imagen/mapamundi-colores.jpg');
-    background-size: cover;      /* Para que cubra toda la pantalla */
-    background-position: center; /* Centrado */
-    background-repeat: no-repeat; /* Que no se repita */
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
     height: 100vh;
 }
 
@@ -23,13 +23,6 @@ main {
     justify-content: center;
     align-items: center;
 }
-
-/* PALETA A USAR (azul y un poco de verde)
-#60B5FF rgb(96, 181, 255)
-#AFDDFF rgb(175, 221, 255)
-#FFECDB rgb(255, 236, 219)
-#FF9149 rgb(255, 145, 73)
-*/
 
 #container {
     background-color: #ffce74;
@@ -46,10 +39,6 @@ main {
     display: none;
 }  
 
-section {
-    margin-bottom: 20px;
-}
-
 #inicio-sec {
     display: flex;
     flex-direction: column;
@@ -57,7 +46,7 @@ section {
     justify-content: center;
 }
 
-#nombreJugador {
+#input-nombre {
     width: 90%;
     padding: 10px;
     margin-bottom: 15px;
@@ -67,7 +56,7 @@ section {
     font-size: 1rem;
 }
 
-#nombreJugador, button {
+#botonIniciar {
     display: block;
     margin: 10px auto;
 }
@@ -75,18 +64,21 @@ section {
 #pregunta-sec h2 {
     font-size: 1.2rem;
     margin-bottom: 20px;
-    font-family: Georgia, serif;
 }
 
-#opciones-sec {
+#opciones {
     margin-bottom: 20%;
-    font-family: Georgia, serif;
     display: flex;
     justify-content: center; /* centra horizontalmente */
     align-items: center;     /* opcional: centra verticalmente si hay altura */
     gap: 16px;               /* opcional: espacio entre botones */
     margin-top: 20px;        /* opcional */
-    
+}
+
+#mensaje {
+    font-size: 1.2rem;
+    margin-top: 5px;
+    font-weight: bold;
 }
 
 button {
@@ -101,18 +93,16 @@ button {
     font-size: 1rem;
     font-weight: bold;
     transition: background-color 0.3s;
-    width: 150px;
+    width: 170px;
     white-space: normal;
 
     /* Estas son las 3 líneas clave para igualar altura y centrar */
-    height: 60px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
 }
-
-
 
 button:hover {
     background-color: #3BC9D9;
@@ -124,7 +114,7 @@ button:hover {
     margin-bottom: 10px;
 }
 
-#resultado-sec {
+#resumen-sec {
     margin-top: 20px;
     font-weight: bold;
     font-size: 1.2rem;
