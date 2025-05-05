@@ -30,7 +30,6 @@ const botonIniciar = document.getElementById("botonIniciar");
 const preguntaSec = document.getElementById("pregunta-sec");
 const textoPregunta = document.getElementById("pregunta");
 const opcionesContenedor = document.getElementById("opciones");
-const resultadoSec = document.getElementById("resultado-sec");
 const mensaje = document.getElementById("mensaje");
 const botonSiguiente = document.getElementById("botonSiguiente");
 const resumenSec = document.getElementById("resumen-sec");
@@ -44,6 +43,7 @@ const rankingSec = document.getElementById("ranking-sec");
 const rankingLista = document.getElementById("ranking-lista");
 const botonRanking = document.getElementById("botonRanking");
 const botonVolverInicio = document.getElementById("botonVolverRanking");
+const botonRankingFinal = document.getElementById("botonRankingFinal");
 
 botonComenzar.addEventListener("click", () => {
   document.getElementById("inicio-sec").style.display = "none";
@@ -126,8 +126,6 @@ function obtenerPregunta() {
 }
 
 function verificarRta(respuestaSeleccionada){
-    resultadoSec.style.display = "block";
-    preguntaSec.style.display = "none";
     preguntasRespondidas++;
   
     if (respuestaSeleccionada === respuestaCorrecta) {
@@ -144,20 +142,21 @@ function verificarRta(respuestaSeleccionada){
     } else {
       mensaje.textContent = `Incorrecto. La respuesta correcta era: ${respuestaCorrecta}`;
       respuestasIncorrectas++;
-      
     }  
-}
 
-//se agrega momentaneamente un boton para continuar
-botonSiguiente.addEventListener("click", () => {
-  resultadoSec.style.display = "none";
-  preguntaSec.style.display = "block";
-  obtenerPregunta();
-});
+    // Desactivar botones
+    const botones = opcionesContenedor.querySelectorAll("button");
+    botones.forEach(btn => btn.disabled = true);
+
+    //cuando se contesta una pregunta, se pasa automaticamnte a la siguiente
+    setTimeout(() => {
+      mensaje.textContent = "";
+      obtenerPregunta();
+    }, 1000);
+}
 
 function mostrarResumen() {
   preguntaSec.style.display = "none";
-  resultadoSec.style.display = "none";
   const tiempoFinal = Math.floor((Date.now() - tiempoInicio) / 1000);
   const promedioTiempo = (tiempoFinal / preguntasRespondidas).toFixed(2);
   resumenSec.style.display = "block";
@@ -168,6 +167,7 @@ function mostrarResumen() {
   resumenIncorrectas.textContent = `Respuestas incorrectas: ${respuestasIncorrectas}`;
 
   botonVolver.style.display = "block";
+  botonRankingFinal.style.display = "block";
   guardarPartida(nombreJugador, puntaje, tiempoFinal); // Guardar partida
   verRanking(); // Reiniciar preguntas
 };
@@ -192,12 +192,15 @@ function guardarPartida(nombre, puntaje, tiempo) {
   });
 }
 
-botonRanking.addEventListener("click", () => {
+function mostrarRanking() {
   rankingSec.style.display = "block";
   resumenSec.style.display = "none";
   botonVolverInicio.style.display = "block";
   verRanking();
-});
+}
+
+botonRanking.addEventListener("click", mostrarRanking);
+botonRankingFinal.addEventListener("click", mostrarRanking);
 
 function verRanking() {
   botonComenzar.style.display = "none";
@@ -230,7 +233,6 @@ function volverAlInicio() {
   resumenSec.style.display = "none";
   rankingSec.style.display = "none";
   preguntaSec.style.display = "none";  
-  resultadoSec.style.display = "none";
  
   document.getElementById("inicio-sec").style.display = "block";
   inputNombre.value = "";

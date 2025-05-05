@@ -1,6 +1,11 @@
 [
   {
     "nombre": "Anónimo",
+    "puntaje": 24,
+    "tiempo": 16
+  },
+  {
+    "nombre": "Anónimo",
     "puntaje": 18,
     "tiempo": 5
   },
@@ -76,39 +81,22 @@
   },
   {
     "nombre": "Anónimo",
+    "puntaje": 5,
+    "tiempo": 14
+  },
+  {
+    "nombre": "Anónimo",
+    "puntaje": 5,
+    "tiempo": 16
+  },
+  {
+    "nombre": "Anónimo",
+    "puntaje": 5,
+    "tiempo": 19
+  },
+  {
+    "nombre": "Anónimo",
     "puntaje": 3,
     "tiempo": 9
-  },
-  {
-    "nombre": "Paula",
-    "puntaje": 0,
-    "respCorrectas": 3,
-    "respIncorrectas": 7,
-    "duracionSegundos": 34.205,
-    "promedio": 3.42
-  },
-  {
-    "nombre": "Paula",
-    "puntaje": 0,
-    "respCorrectas": 2,
-    "respIncorrectas": 8,
-    "duracionSegundos": 9.667,
-    "promedio": 0.97
-  },
-  {
-    "nombre": "Paula",
-    "puntaje": 0,
-    "respCorrectas": 2,
-    "respIncorrectas": 8,
-    "duracionSegundos": 10.575,
-    "promedio": 1.06
-  },
-  {
-    "nombre": "Paula",
-    "puntaje": 0,
-    "respCorrectas": 4,
-    "respIncorrectas": 6,
-    "duracionSegundos": 16.645,
-    "promedio": 1.66
   }
 ]
