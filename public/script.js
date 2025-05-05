@@ -31,7 +31,6 @@ const preguntaSec = document.getElementById("pregunta-sec");
 const textoPregunta = document.getElementById("pregunta");
 const opcionesContenedor = document.getElementById("opciones");
 const mensaje = document.getElementById("mensaje");
-const botonSiguiente = document.getElementById("botonSiguiente");
 const resumenSec = document.getElementById("resumen-sec");
 const resumenPuntaje = document.getElementById("resumen-puntaje");
 const resumenTiempo = document.getElementById("resumen-tiempo");
@@ -95,8 +94,8 @@ function obtenerPregunta() {
           : paises[Math.floor(Math.random() * paises.length)].name.common;
 
       pregunta = `¿El país ${nombreMostrado} esta representado por la siguiente bandera?<br><br><img src="${paisRandom.flags.png}" alt="Bandera" style="width: 100px;">`;
-      respuestaCorrecta = mostrarNombreReal ? "Sí" : "No";
-      opciones = new Set(["Sí", "No"]);
+      respuestaCorrecta = mostrarNombreReal ? "Si" : "No";
+      opciones = ["No", "Si"];
 
       //pregunta de frontera
   } else if (tipoPregunta === 2 && paisRandom.borders && paisRandom.borders.length > 0){
@@ -117,7 +116,15 @@ function obtenerPregunta() {
   tipoPreguntaActual = tipoPregunta;
   textoPregunta.innerHTML = pregunta;
   opcionesContenedor.innerHTML = "";
-  Array.from(opciones).sort(() => Math.random() - 0.5).forEach(opcion => {
+
+  let opcionesSiNo;
+  if (Array.isArray(opciones)) {
+    opcionesSiNo = opciones; // para tipo Sí/No
+  } else {
+    opcionesSiNo = Array.from(opciones).sort(() => Math.random() - 0.5); // mezclar solo si no es Sí/No
+  }
+
+  opcionesSiNo.forEach(opcion => {
     const boton = document.createElement("button");
     boton.textContent = opcion;
     boton.addEventListener("click", () => verificarRta(opcion));
@@ -130,6 +137,7 @@ function verificarRta(respuestaSeleccionada){
   
     if (respuestaSeleccionada === respuestaCorrecta) {
       mensaje.textContent = "¡Correcto!";
+      mensaje.style.color = "green";
       // Asignar puntaje según el tipo de pregunta
       if (tipoPreguntaActual === 0) {
         puntaje += 3; // capital
@@ -141,6 +149,7 @@ function verificarRta(respuestaSeleccionada){
       respuestasCorrectas++;
     } else {
       mensaje.textContent = `Incorrecto. La respuesta correcta era: ${respuestaCorrecta}`;
+      mensaje.style.color = "red";
       respuestasIncorrectas++;
     }  
 
@@ -166,8 +175,8 @@ function mostrarResumen() {
   resumenCorrectas.textContent = `Respuestas correctas: ${respuestasCorrectas}/10`;
   resumenIncorrectas.textContent = `Respuestas incorrectas: ${respuestasIncorrectas}`;
 
-  botonVolver.style.display = "block";
-  botonRankingFinal.style.display = "block";
+  botonVolver.style.display = "flex";
+  botonRankingFinal.style.display = "flex";
   guardarPartida(nombreJugador, puntaje, tiempoFinal); // Guardar partida
   verRanking(); // Reiniciar preguntas
 };
@@ -192,7 +201,7 @@ function guardarPartida(nombre, puntaje, tiempo) {
 function mostrarRanking() {
   rankingSec.style.display = "block";
   resumenSec.style.display = "none";
-  botonVolverInicio.style.display = "block";
+  botonVolverInicio.style.display = "flex";
   document.getElementById("inicio-sec").style.display = "none";
   verRanking();
 }
@@ -201,7 +210,6 @@ botonRanking.addEventListener("click", mostrarRanking);
 botonRankingFinal.addEventListener("click", mostrarRanking);
 
 function verRanking() {
-  
   botonComenzar.style.display = "none";
   botonRanking.style.display = "none";
   fetch('/ranking')
@@ -224,23 +232,27 @@ function verRanking() {
 }
 
 function volverAlInicio() {
+  // Reiniciar variables
   puntaje = 0;
+  preguntasRespondidas = 0;
   respuestasCorrectas = 0;
   respuestasIncorrectas = 0;
-  preguntasRespondidas = 0;
+  tiempoInicio = 0;
+  respuestaCorrecta = "";
+  tipoPreguntaActual = null;
 
+  // Limpiar interfaz
+  mensaje.textContent = "";
+  opcionesContenedor.innerHTML = "";
+  inputNombre.value = "";
+
+  // Mostrar pantalla inicial
   resumenSec.style.display = "none";
   rankingSec.style.display = "none";
-  preguntaSec.style.display = "none";  
- 
-  document.getElementById("inicio-sec").style.display = "block";
-  inputNombre.value = "";
-  botonComenzar.style.display = "block";
-  botonRanking.style.display = "block";
-  botonVolver.style.display = "none";
-  botonVolverInicio.style.display = "none";
+  document.getElementById("inicio-sec").style.display = "flex";
+  botonComenzar.style.display = "flex";
+  botonRanking.style.display = "flex";
 }
 
 botonVolver.addEventListener("click", volverAlInicio);
 botonVolverInicio.addEventListener("click", volverAlInicio);
-

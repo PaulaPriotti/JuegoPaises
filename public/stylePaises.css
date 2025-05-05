@@ -114,11 +114,17 @@ button:hover {
     margin-bottom: 10px;
 }
 
+
 #resumen-sec {
     margin-top: 20px;
     font-weight: bold;
     font-size: 1.2rem;
     color: black;
+}
+
+#botonVolverRanking {
+    display: block;
+    margin: 10px auto;
 }
 
 footer {
