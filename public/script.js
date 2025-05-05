@@ -173,16 +173,13 @@ function mostrarResumen() {
 };
 
 function guardarPartida(nombre, puntaje, tiempo) {
+  const partida = {nombre, puntaje, tiempo};
   fetch('/guardarJuego', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
-      nombre,
-      puntaje,
-      tiempo
-    })
+    body: JSON.stringify(partida)
   })
   .then(res => res.json())
   .then(data => console.log("Partida guardada:", data))
