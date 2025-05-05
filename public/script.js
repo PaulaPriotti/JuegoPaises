@@ -40,7 +40,10 @@ const resumenCorrectas = document.getElementById("resumen-correctas");
 const resumenIncorrectas = document.getElementById("resumen-incorrectas");
 const resumenPromedioTiempo = document.getElementById("resumen-promedio-tiempo");
 const botonVolver = document.getElementById("botonVolver");
+const rankingSec = document.getElementById("ranking-sec");
 const rankingLista = document.getElementById("ranking-lista");
+const botonRanking = document.getElementById("botonRanking");
+const botonVolverInicio = document.getElementById("botonVolverRanking");
 
 botonComenzar.addEventListener("click", () => {
   document.getElementById("inicio-sec").style.display = "none";
@@ -153,6 +156,8 @@ botonSiguiente.addEventListener("click", () => {
 });
 
 function mostrarResumen() {
+  preguntaSec.style.display = "none";
+  resultadoSec.style.display = "none";
   const tiempoFinal = Math.floor((Date.now() - tiempoInicio) / 1000);
   const promedioTiempo = (tiempoFinal / preguntasRespondidas).toFixed(2);
   resumenSec.style.display = "block";
@@ -162,19 +167,10 @@ function mostrarResumen() {
   resumenCorrectas.textContent = `Respuestas correctas: ${respuestasCorrectas}/10`;
   resumenIncorrectas.textContent = `Respuestas incorrectas: ${respuestasIncorrectas}`;
 
+  botonVolver.style.display = "block";
   guardarPartida(nombreJugador, puntaje, tiempoFinal); // Guardar partida
   verRanking(); // Reiniciar preguntas
 };
-
-botonVolver.addEventListener("click", () => {
-  resumenSec.style.display = "none";
-  document.getElementById("inicio-sec").style.display = "block";
-  inputNombre.value = "";
-  puntaje = 0;
-  respuestasCorrectas = 0;
-  respuestasIncorrectas = 0;
-  preguntasRespondidas = 0;
-});  
 
 function guardarPartida(nombre, puntaje, tiempo) {
   fetch('/guardarJuego', {
@@ -196,7 +192,16 @@ function guardarPartida(nombre, puntaje, tiempo) {
   });
 }
 
+botonRanking.addEventListener("click", () => {
+  rankingSec.style.display = "block";
+  resumenSec.style.display = "none";
+  botonVolverInicio.style.display = "block";
+  verRanking();
+});
+
 function verRanking() {
+  botonComenzar.style.display = "none";
+  botonRanking.style.display = "none";
   fetch('/ranking')
     .then(res => res.json())
     .then(ranking => {
@@ -215,3 +220,27 @@ function verRanking() {
       rankingLista.innerHTML = "<li>Error al cargar el ranking.</li>";
     });
 }
+
+function volverAlInicio() {
+  puntaje = 0;
+  respuestasCorrectas = 0;
+  respuestasIncorrectas = 0;
+  preguntasRespondidas = 0;
+
+  resumenSec.style.display = "none";
+  rankingSec.style.display = "none";
+  preguntaSec.style.display = "none";  
+  resultadoSec.style.display = "none";
+ 
+  document.getElementById("inicio-sec").style.display = "block";
+  inputNombre.value = "";
+  botonComenzar.style.display = "block";
+  botonRanking.style.display = "block";
+
+  botonVolver.style.display = "none";
+  botonVolverInicio.style.display = "none";
+}
+
+botonVolver.addEventListener("click", volverAlInicio);
+botonVolverInicio.addEventListener("click", volverAlInicio);
+

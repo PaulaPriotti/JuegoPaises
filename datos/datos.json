@@ -1,5 +1,45 @@
 [
   {
+    "nombre": "Anónimo",
+    "puntaje": 18,
+    "tiempo": 5
+  },
+  {
+    "nombre": "Anónimo",
+    "puntaje": 16,
+    "tiempo": 9
+  },
+  {
+    "nombre": "Anónimo",
+    "puntaje": 16,
+    "tiempo": 8
+  },
+  {
+    "nombre": "Anónimo",
+    "puntaje": 16,
+    "tiempo": 11
+  },
+  {
+    "nombre": "Anónimo",
+    "puntaje": 15,
+    "tiempo": 9
+  },
+  {
+    "nombre": "Anónimo",
+    "puntaje": 15,
+    "tiempo": 8
+  },
+  {
+    "nombre": "Helena",
+    "puntaje": 15,
+    "tiempo": 10
+  },
+  {
+    "nombre": "Paula",
+    "puntaje": 14,
+    "tiempo": 10
+  },
+  {
     "nombre": "Paula",
     "puntaje": 13,
     "tiempo": 10
@@ -8,6 +48,36 @@
     "nombre": "Paula",
     "puntaje": 13,
     "tiempo": 28
+  },
+  {
+    "nombre": "Anónimo",
+    "puntaje": 13,
+    "tiempo": 8
+  },
+  {
+    "nombre": "Helena",
+    "puntaje": 10,
+    "tiempo": 8
+  },
+  {
+    "nombre": "Anónimo",
+    "puntaje": 8,
+    "tiempo": 8
+  },
+  {
+    "nombre": "Anónimo",
+    "puntaje": 6,
+    "tiempo": 10
+  },
+  {
+    "nombre": "Anónimo",
+    "puntaje": 6,
+    "tiempo": 6
+  },
+  {
+    "nombre": "Anónimo",
+    "puntaje": 3,
+    "tiempo": 9
   },
   {
     "nombre": "Paula",
@@ -40,25 +110,5 @@
     "respIncorrectas": 6,
     "duracionSegundos": 16.645,
     "promedio": 1.66
-  },
-  {
-    "nombre": "Anonimo",
-    "puntaje": 0,
-    "tiempo": 0
-  },
-  {
-    "nombre": "Anonimo",
-    "puntaje": 0,
-    "tiempo": 0
-  },
-  {
-    "nombre": "Paula",
-    "puntaje": 0,
-    "tiempo": 0
-  },
-  {
-    "nombre": "Paula",
-    "puntaje": 0,
-    "tiempo": 0
   }
 ]
