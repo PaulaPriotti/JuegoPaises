@@ -6,10 +6,9 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const dataPath = path.join(__dirname, 'partidas.json');
+const dataPath = path.join(__dirname, 'datos.json');
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public'))); // frontend
 
 app.post('/guardarJuego', (req, res) => {
   const nuevaPartida = req.body;

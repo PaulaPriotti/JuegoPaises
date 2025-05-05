@@ -193,6 +193,7 @@ function mostrarRanking() {
   rankingSec.style.display = "block";
   resumenSec.style.display = "none";
   botonVolverInicio.style.display = "block";
+  document.getElementById("inicio-sec").style.display = "none";
   verRanking();
 }
 
@@ -200,6 +201,7 @@ botonRanking.addEventListener("click", mostrarRanking);
 botonRankingFinal.addEventListener("click", mostrarRanking);
 
 function verRanking() {
+  
   botonComenzar.style.display = "none";
   botonRanking.style.display = "none";
   fetch('/ranking')
