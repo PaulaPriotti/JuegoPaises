@@ -5,10 +5,10 @@ const fs = require('fs');
 const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
-
-const dataPath = path.join(__dirname, 'datos.json');
+const dataPath = path.join(__dirname, 'data.json');
 
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/guardarJuego', (req, res) => {
   const nuevaPartida = req.body;
