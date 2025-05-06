@@ -2,7 +2,7 @@
   "name": "juegopaises",
   "version": "1.0.0",
   "description": "trabajo practico integrador Programacion web II 2025 primer cuatri",
-  "main": "mainPaises.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"

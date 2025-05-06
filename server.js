@@ -6,11 +6,20 @@ const path = require('path');
 const app = express();
 const cors = require('cors');
 app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000'
+}));
 const PORT = process.env.PORT || 3000;
 const dataPath = path.join(__dirname, 'data.json');
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
+const corsOptions = {
+  origin: ['http://localhost:3000', 'https://juegodepaises.onrender.com']
+};
+
+app.use(cors(corsOptions));
 
 app.post('/guardarJuego', (req, res) => {
   const nuevaPartida = req.body;
