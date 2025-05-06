@@ -279,7 +279,7 @@ button:hover {
 
 /* Estilos para el ranking */
 #ranking-lista {
-    max-height: 200px;
+    max-height: 150px;
     overflow-y: auto;
     overflow-x: hidden;
 }
