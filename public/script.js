@@ -177,11 +177,11 @@ function mostrarResumen() {
 
   botonVolver.style.display = "flex";
   botonRankingFinal.style.display = "flex";
-  guardarPartida(nombreJugador, puntaje, tiempoFinal, respuestasCorrectas, respuestasIncorrectas, promedioTiempo); // Guardar partida
+  guardarPartida(nombreJugador, puntaje, respuestasCorrectas, respuestasIncorrectas, tiempoFinal, promedioTiempo); // Guardar partida
   verRanking(); // Reiniciar preguntas
 };
 
-function guardarPartida(nombre, puntaje, tiempo, correctas, incorrectas, promedioTiempo) {
+function guardarPartida(nombre, puntaje, correctas, incorrectas, tiempo, promedioTiempo) {
   const partida = {
     nombre, 
     puntaje, 
@@ -235,7 +235,7 @@ function verRanking() {
             <td>${item.correctas ?? '-'}</td>
             <td>${item.incorrectas ?? '-'}</td>
             <td>${item.tiempo}s</td>
-            <td>${item.promedioTiempo ? item.promedioTiempo + ' seg' : '-'}</td>
+            <td>${item.promedioTiempo !== '-' ? item.promedioTiempo + ' seg' : '-'}</td>
           `;
           rankingLista.appendChild(fila);
         }

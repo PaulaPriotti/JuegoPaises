@@ -24,7 +24,7 @@ app.use(cors(corsOptions));
 app.post('/guardarJuego', (req, res) => {
   const nuevaPartida = req.body;
   if (typeof nuevaPartida.promedioTiempo !== 'number' || isNaN(nuevaPartida.promedioTiempo)) {
-    nuevaPartida.promedioTiempo = 0;  // O cualquier valor predeterminado
+    nuevaPartida.promedioTiempo = (parseFloat(nuevaPartida.tiempo) / 10).toFixed(2);
   }
 
   fs.readFile(dataPath, 'utf8', (err, data) => {
@@ -55,14 +55,14 @@ app.get('/ranking', (req, res) => {
     //ver si podemos poner el promedio de tiempo en el ranking
     partidas.forEach(partida => {
       const tiempoTotal = parseFloat(partida.tiempo); // Tiempo en segundos
-      const numeroDePreguntas = partida.respuestasCorrectas + partida.respuestasIncorrectas; // Total de preguntas contestadas
-      if (numeroDePreguntas > 0 && !isNaN(tiempoTotal)) {
-        partida.promedioTiempo = (tiempoTotal / numeroDePreguntas).toFixed(2) + " seg"; // Calculamos el promedio de tiempo por pregunta
+      if (!isNaN(tiempoTotal)) {
+        if (partida.promedioTiempo === '-' || partida.promedioTiempo === undefined) {
+          partida.promedioTiempo = (tiempoTotal / 10).toFixed(2); // Promedio de tiempo entre 10 preguntas
+        }
       } else {
-        partida.promedioTiempo = '-'; // Si no hay preguntas contestadas, asignamos '-'
+        partida.promedioTiempo = '0'; // Si hay un error en el tiempo
       }
     });
-
 
     const top20 = partidas
       .sort((a, b) => {
@@ -72,6 +72,7 @@ app.get('/ranking', (req, res) => {
         return b.puntaje - a.puntaje;
       })
       .slice(0, 20);
+      console.log("Datos antes de enviar al frontend:", top20);
     res.status(200).json(top20);
   });
 });
