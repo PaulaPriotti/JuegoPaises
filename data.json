@@ -1,10 +1,154 @@
 [
   {
-    "nombre": "Helena",
+    "nombre": "Felipe",
     "puntaje": 27,
     "tiempo": 48,
     "correctas": 7,
     "incorrectas": 3,
     "promedioTiempo": "4.80"
+  },
+  {
+    "nombre": "Juliana",
+    "puntaje": 35,
+    "tiempo": 50,
+    "correctas": 8,
+    "incorrectas": 2,
+    "promedioTiempo": "6.25"
+  },
+  {
+    "nombre": "Roberto",
+    "puntaje": 29,
+    "tiempo": 45,
+    "correctas": 6,
+    "incorrectas": 4,
+    "promedioTiempo": "7.5"
+  },
+  {
+    "nombre": "Claudia",
+    "puntaje": 40,
+    "tiempo": 55,
+    "correctas": 9,
+    "incorrectas": 5,
+    "promedioTiempo": "6.11"
+  },
+  {
+    "nombre": "Miguel",
+    "puntaje": 33,
+    "tiempo": 43,
+    "correctas": 8,
+    "incorrectas": 3,
+    "promedioTiempo": "5.38"
+  },
+  {
+    "nombre": "Sofia",
+    "puntaje": 42,
+    "tiempo": 52,
+    "correctas": 9,
+    "incorrectas": 3,
+    "promedioTiempo": "5.78"
+  },
+  {
+    "nombre": "Victor",
+    "puntaje": 38,
+    "tiempo": 49,
+    "correctas": 7,
+    "incorrectas": 2,
+    "promedioTiempo": "7.0"
+  },
+  {
+    "nombre": "Mariana",
+    "puntaje": 45,
+    "tiempo": 58,
+    "correctas": 10,
+    "incorrectas": 4,
+    "promedioTiempo": "5.8"
+  },
+  {
+    "nombre": "Carlos",
+    "puntaje": 28,
+    "tiempo": 50,
+    "correctas": 7,
+    "incorrectas": 3,
+    "promedioTiempo": "7.14"
+  },
+  {
+    "nombre": "Lucia",
+    "puntaje": 31,
+    "tiempo": 46,
+    "correctas": 6,
+    "incorrectas": 2,
+    "promedioTiempo": "7.67"
+  },
+  {
+    "nombre": "Javier",
+    "puntaje": 39,
+    "tiempo": 51,
+    "correctas": 8,
+    "incorrectas": 3,
+    "promedioTiempo": "6.38"
+  },
+  {
+    "nombre": "Ana",
+    "puntaje": 36,
+    "tiempo": 47,
+    "correctas": 7,
+    "incorrectas": 2,
+    "promedioTiempo": "6.71"
+  },
+  {
+    "nombre": "Esteban",
+    "puntaje": 32,
+    "tiempo": 44,
+    "correctas": 7,
+    "incorrectas": 4,
+    "promedioTiempo": "6.29"
+  },
+  {
+    "nombre": "Isabella",
+    "puntaje": 41,
+    "tiempo": 56,
+    "correctas": 9,
+    "incorrectas": 2,
+    "promedioTiempo": "6.22"
+  },
+  {
+    "nombre": "Diego",
+    "puntaje": 44,
+    "tiempo": 54,
+    "correctas": 8,
+    "incorrectas": 4,
+    "promedioTiempo": "6.75"
+  },
+  {
+    "nombre": "Paula",
+    "puntaje": 30,
+    "tiempo": 49,
+    "correctas": 7,
+    "incorrectas": 3,
+    "promedioTiempo": "7.0"
+  },
+  {
+    "nombre": "Alejandro",
+    "puntaje": 37,
+    "tiempo": 55,
+    "correctas": 8,
+    "incorrectas": 3,
+    "promedioTiempo": "6.88"
+  },
+  {
+    "nombre": "Teresa",
+    "puntaje": 33,
+    "tiempo": 47,
+    "correctas": 6,
+    "incorrectas": 2,
+    "promedioTiempo": "7.83"
+  },
+  {
+    "nombre": "Ricardo",
+    "puntaje": 29,
+    "tiempo": 51,
+    "correctas": 7,
+    "incorrectas": 3,
+    "promedioTiempo": "7.29"
   }
 ]
