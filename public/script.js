@@ -22,6 +22,8 @@ let respuestasIncorrectas = 0;
 let preguntasRespondidas = 0;
 let tipoPreguntaActual = null;
 let respuestaCorrecta = ""; 
+// NUEVA VARIABLEEEEE
+let tiempoTranscurrido = 0;
 
 const botonComenzar = document.getElementById("botonComenzar");
 const nombreSec = document.getElementById("nombre-sec");
@@ -43,6 +45,7 @@ const rankingLista = document.getElementById("ranking-lista");
 const botonRanking = document.getElementById("botonRanking");
 const botonVolverInicio = document.getElementById("botonVolverRanking");
 const botonRankingFinal = document.getElementById("botonRankingFinal");
+const cronometro = document.getElementById("tiempo-transcurrido");
 
 botonComenzar.addEventListener("click", () => {
   document.getElementById("inicio-sec").style.display = "none";
@@ -60,6 +63,12 @@ botonIniciar.addEventListener("click", () => {
   preguntaSec.style.display = "block";
   tiempoInicio = Date.now();
   obtenerPregunta();
+
+  cronometro.style.display = "block"; // Mostrar cronómetro
+  setInterval(() => {
+    tiempoTranscurrido = Math.floor((Date.now() - tiempoInicio) / 1000); // Tiempo en segundos
+    document.getElementById('tiempo-display').textContent = tiempoTranscurrido; // Mostrar tiempo
+  }, 1000);
 });
 
 function obtenerPregunta() {

@@ -75,6 +75,7 @@ button {
 button:hover {
     background-color: #FF6A00;
     transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 #botonIniciar {
@@ -97,18 +98,15 @@ button:hover {
   
 /* Estilos de boton de opciones */
 #opciones button {
+    font-size: 1.2rem;
     background-color: #758BFD;
-    max-width: 170px;
-    height: auto;
-    padding: 12px;
-    white-space: normal;
-    word-wrap: break-word;
-    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
   
-
 #opciones button:hover {
-    background-color: #4E6FFF;
+    background-color: #FF8600;
+    color: #fff;
+    transform: scale(1.05);
 }
 
 #opciones {
@@ -200,6 +198,31 @@ button:hover {
     to { opacity: 1; }
 }
 
+/* Estilos para el cronometro */
+#tiempo-transcurrido {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(39, 24, 126, 0.85); /* azul oscuro con opacidad */
+    color: #F1F2F6; /* texto claro */
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+    border: 2px solid #AEB8FE;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    backdrop-filter: blur(2px);
+}
+
+#tiempo-transcurrido:hover {
+    transform: scale(1.05);
+    background-color: #FF8600; /* resalta al pasar el mouse */
+    color: #27187E;
+    border-color: #FF8600;
+}
+
 /* Estilos en el mensaje de respuesta correcta o incorrecta */
 #mensaje {
     margin-bottom: 60px;
@@ -211,45 +234,45 @@ button:hover {
   
 /* Estilos para el resumen de la partida */
 #informacion-resumen {
-    background-color: #f4f4f4; /* Color de fondo suave */
-    border-radius: 10px; /* Bordes redondeados */
-    padding: 20px; /* Espaciado interno */
-    max-width: 600px; /* Ancho máximo */
-    margin: 20px auto; /* Centrado en la pantalla */
-    text-align: center; /* Alineación centrada */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    background-color: #f4f4f4; 
+    border-radius: 10px; 
+    padding: 20px;
+    max-width: 600px; 
+    margin: 20px auto; 
+    text-align: center; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   #informacion-resumen h2 {
-    font-size: 2rem; /* Tamaño de fuente mayor para el título */
-    color: #333; /* Color de texto oscuro */
+    font-size: 2rem; 
+    color: #333; 
   }
   
   #informacion-resumen h3 {
-    font-size: 1.5rem; /* Tamaño de fuente para el subtítulo */
-    color: #4CAF50; /* Color verde para destacar */
-    margin-bottom: 10px; /* Espaciado inferior */
+    font-size: 1.5rem;
+    color: #4CAF50;
+    margin-bottom: 10px;
   }
   
   #informacion-resumen p {
-    font-size: 1.1rem; /* Tamaño de texto legible */
-    color: #555; /* Color de texto gris suave */
-    margin-bottom: 8px; /* Espaciado entre párrafos */
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 8px; 
   }
   
   #informacion-resumen p#resumen-puntaje {
-    font-weight: bold; /* Resaltar puntaje */
-    color: #FF9800; /* Color anaranjado para el puntaje */
+    font-weight: bold; 
+    color: #FF8600;
   }
   
   #informacion-resumen p#resumen-tiempo {
-    font-style: italic; /* Estilo en cursiva para el tiempo */
-    color: #2196F3; /* Color azul */
+    font-style: italic; 
+    color: #758BFD; 
   }
   
   #informacion-resumen p#resumen-promedio-tiempo {
-    color: #9E9E9E; /* Color gris suave */
-    font-size: 1rem; /* Tamaño de fuente más pequeño */
+    color: #9E9E9E;
+    font-size: 1rem;
   }
   
 
