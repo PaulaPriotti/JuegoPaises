@@ -1,3 +1,4 @@
+/* Estilos en general */
 html, body {
     height: 100%;
     margin: 0;
@@ -25,26 +26,31 @@ main {
     align-items: center;
 }
 
+/* Estilos en el container */
 #container {
     background-color: #F1F2F6;
     padding: 30px 20px;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     width: 90%;
-    max-width: 600px;
+    max-width: 800px;
+    max-height: 600px;
     text-align: center;
     transition: transform 0.3s ease box-shadow 0.3s ease;
 }
 
 #container:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05); 
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); 
 }
 
+
+/* Titulos y etc */
 h2, h3, h4 {
     color: #27187E;
 }
 
+/* Estilos de botones principales */
 button {
     background-color: #FF8600;
     color: white;
@@ -71,14 +77,50 @@ button:hover {
     transform: scale(1.05);
 }
 
+#botonIniciar {
+    display: block;
+    margin: 10px auto;
+}
+
+#botonesResumen {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#botonVolverRanking {
+    display: block;
+    margin: 10px auto;
+}
+
+  
+/* Estilos de boton de opciones */
 #opciones button {
     background-color: #758BFD;
+    max-width: 170px;
+    height: auto;
+    padding: 12px;
+    white-space: normal;
+    word-wrap: break-word;
+    text-align: center;
 }
+  
 
 #opciones button:hover {
     background-color: #4E6FFF;
 }
 
+#opciones {
+    margin-bottom: 10%;
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    gap: 16px;               
+    margin-top: 20px;        
+}
+
+/* Estilos pantalla de inicio */
 #inicio-sec {
     display: flex;
     flex-direction: column;
@@ -86,6 +128,51 @@ button:hover {
     justify-content: center;
 }
 
+/* Estilos para el titulo y la introduccion */
+#introduccion-sec {
+    background-color: rgba(255, 255, 255, 0.8); 
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    max-width: 800px;
+    width: 90%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#introduccion-sec h2 {
+    font-size: 2rem;
+    color: #27187E;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#introduccion-sec h4 {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    font-weight: 400;
+    margin-bottom: 20px;
+    padding: 0 15px;
+    font-family: 'Nunito', sans-serif;
+}
+
+#introduccion-sec h2, #introduccion-sec h4 {
+    text-align: center;
+    margin: 0;
+    padding: 0 20px;
+}
+
+#introduccion-sec {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos para la caja de nombre del jugador */
 #input-nombre {
     width: 90%;
     padding: 12px;
@@ -103,64 +190,75 @@ button:hover {
     justify-content: center;
 }
 
-/* animaciones prueba */
+/* Animaciones */
 #pregunta-sec, #resumen-sec, #ranking-sec {
     animation: fadeIn 0.5s ease-in-out;
 }
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-#botonIniciar {
-    display: block;
-    margin: 10px auto;
-}
-
-/* #pregunta-sec h2 {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-} */
-
-#opciones {
-    margin-bottom: 20%;
-    display: flex;
-    justify-content: center; 
-    align-items: center;     
-    gap: 16px;               
-    margin-top: 20px;        
-}
-
+/* Estilos en el mensaje de respuesta correcta o incorrecta */
 #mensaje {
-    font-size: 1.2rem;
-    margin-top: 5px;
+    margin-bottom: 60px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-family: 'Nunito', sans-serif;
     font-weight: bold;
 }
+  
+/* Estilos para el resumen de la partida */
+#informacion-resumen {
+    background-color: #f4f4f4; /* Color de fondo suave */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    max-width: 600px; /* Ancho máximo */
+    margin: 20px auto; /* Centrado en la pantalla */
+    text-align: center; /* Alineación centrada */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+  #informacion-resumen h2 {
+    font-size: 2rem; /* Tamaño de fuente mayor para el título */
+    color: #333; /* Color de texto oscuro */
+  }
+  
+  #informacion-resumen h3 {
+    font-size: 1.5rem; /* Tamaño de fuente para el subtítulo */
+    color: #4CAF50; /* Color verde para destacar */
+    margin-bottom: 10px; /* Espaciado inferior */
+  }
+  
+  #informacion-resumen p {
+    font-size: 1.1rem; /* Tamaño de texto legible */
+    color: #555; /* Color de texto gris suave */
+    margin-bottom: 8px; /* Espaciado entre párrafos */
+  }
+  
+  #informacion-resumen p#resumen-puntaje {
+    font-weight: bold; /* Resaltar puntaje */
+    color: #FF9800; /* Color anaranjado para el puntaje */
+  }
+  
+  #informacion-resumen p#resumen-tiempo {
+    font-style: italic; /* Estilo en cursiva para el tiempo */
+    color: #2196F3; /* Color azul */
+  }
+  
+  #informacion-resumen p#resumen-promedio-tiempo {
+    color: #9E9E9E; /* Color gris suave */
+    font-size: 1rem; /* Tamaño de fuente más pequeño */
+  }
+  
 
-/* #ranking-sec {
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
- */
 
-/* #resumen-sec {
-    margin-top: 20px;
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: black;
-}
-    */
-
-#botonVolverRanking {
-    display: block;
-    margin: 10px auto;
-}  
-
-/* ESTILOS PARA EL RANKING */
+/* Estilos para el ranking */
 #ranking-lista {
     max-height: 200px;
-    overflow-y: auto;        /* Scroll solo vertical */
-    overflow-x: hidden;      /* Evita el scroll horizontal */
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .ranking-table {
@@ -171,14 +269,14 @@ button:hover {
 }
 
 .ranking-scroll {
-    max-height: 350px;  /* ajustá según tu preferencia */
+    max-height: 350px; 
     overflow-y: auto;
     overflow-x: hidden;
-    margin: 10px 0;
+    margin: 5px 0; 
 }
 
 .ranking-table th, .ranking-table td {
-    padding: 8px;
+    padding: 8px; 
     text-align: center;
     border-bottom: 1px solid #ddd;
     word-wrap: break-word; /* permite que el texto largo se divida en varias líneas */
@@ -186,7 +284,7 @@ button:hover {
 }
 
 .ranking-table thead {
-    background-color: #4CAF50;
+    background-color: #27187E;
     color: white;
 }
 
@@ -194,8 +292,16 @@ button:hover {
     background-color: #f9f9f9;
 }
 
+.ranking-table tbody tr {
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    cursor: pointer;
+}
+
 .ranking-table tbody tr:hover {
-    background-color: #f1f1f1;
+    transform: scale(1.02);
+    background-color: #e6e6ff;
+    z-index: 1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .ranking-table .highlight {
@@ -205,13 +311,13 @@ button:hover {
 
 .ranking-table th:nth-child(1),
 .ranking-table td:nth-child(1) {
-    width: 5%; /* Ajustalo según el diseño */
+    width: 4%; /* Ajustalo según el diseño */
 }
 
 /* Hace la columna "Nombre" más ancha */
 .ranking-table th:nth-child(2),
 .ranking-table td:nth-child(2) {
-    width: 10%;  /* Ajustalo según el diseño */
+    width: 15%;  /* Ajustalo según el diseño */
 }
 
 /* Hace la columna "Prom. Tiempo" más ancha */
@@ -220,6 +326,7 @@ button:hover {
     width: 10%; /* Podés subirlo a 25% si sigue quedando corto */
 }
 
+/* Estilos para el footer */
 footer {
 padding: 10px 0;
 text-align: center;

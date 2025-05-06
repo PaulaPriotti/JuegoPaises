@@ -150,5 +150,53 @@
     "correctas": 7,
     "incorrectas": 3,
     "promedioTiempo": "7.29"
+  },
+  {
+    "nombre": "Anónimo",
+    "puntaje": 10,
+    "tiempo": 17,
+    "correctas": 2,
+    "incorrectas": 8,
+    "promedioTiempo": "1.70"
+  },
+  {
+    "nombre": "Pola",
+    "puntaje": 19,
+    "tiempo": 51,
+    "correctas": 5,
+    "incorrectas": 5,
+    "promedioTiempo": "5.10"
+  },
+  {
+    "nombre": "Anónimo",
+    "puntaje": 13,
+    "tiempo": 27,
+    "correctas": 3,
+    "incorrectas": 7,
+    "promedioTiempo": "2.70"
+  },
+  {
+    "nombre": "Anónimo",
+    "puntaje": 21,
+    "tiempo": 16,
+    "correctas": 5,
+    "incorrectas": 5,
+    "promedioTiempo": "1.60"
+  },
+  {
+    "nombre": "Paulaa",
+    "puntaje": 16,
+    "tiempo": 15,
+    "correctas": 4,
+    "incorrectas": 6,
+    "promedioTiempo": "1.50"
+  },
+  {
+    "nombre": "Anónimo",
+    "puntaje": 3,
+    "tiempo": 16,
+    "correctas": 1,
+    "incorrectas": 9,
+    "promedioTiempo": "1.60"
   }
 ]

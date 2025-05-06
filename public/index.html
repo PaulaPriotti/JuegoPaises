@@ -16,8 +16,10 @@
       <div id="container">
         <!-- Pantalla de inicio -->
         <div id="inicio-sec">
+          <div id="introduccion-sec">
           <h2>Bienvenidos al juego de paises</h2>
           <h4>Son 10 preguntas sobre las capitales, fronteras y banderas de los paises. Recuerda que una vez iniciado el juego, comienza el cronometro. El ranking se realiza en base a la cantidad de respuestas contestadas en el menor tiempo posible.</h4>
+        </div>
           <button id="botonComenzar">🎮 Comenzar</button>
           <button id="botonRanking">🏆 Ver ranking</button>
         </div>
@@ -33,21 +35,25 @@
         <section id="pregunta-sec" style="display: none;">
           <h2 id="pregunta"></h2>
           <div id="opciones"></div>
-          <!-- Mensaje de respuesta correcta o incorrecta -->
           <p id="mensaje"></p>
         </section>
-        
+      
+
         <!-- Resumen de la partida -->
         <section id="resumen-sec" style="display: none;">
-          <h2>¡Se ha terminado el juego!</h2>
-          <h3>✅ Resumen de la partida</h3>  
-          <p id="resumen-puntaje"></p>
-          <p id="resumen-correctas"></p>
-          <p id="resumen-incorrectas"></p>
-          <p id="resumen-tiempo"></p>
-          <p id="resumen-promedio-tiempo"></p>
+          <div id="informacion-resumen">
+            <h2>¡Se ha terminado el juego!</h2>
+            <h3>✅ Resumen de la partida</h3>  
+            <p id="resumen-puntaje"></p>
+            <p id="resumen-correctas"></p>
+            <p id="resumen-incorrectas"></p>
+            <p id="resumen-tiempo"></p>
+            <p id="resumen-promedio-tiempo"></p>
+          </div>
+          <div id="botonesResumen">
           <button id="botonVolver">Volver a jugar</button>
-          <button id="botonRankingFinal">Ver ranking</button>
+          <button id="botonRankingFinal">🏆 Ver ranking</button>
+        </div>
         </section>
 
         <!-- Ranking -->
@@ -62,7 +68,7 @@
                 <th>Puntaje</th>
                 <th>Correctas</th>
                 <th>Incorrectas</th>
-                <th>Tiempo (s)</th>
+                <th>Tiempo</th>
                 <th>Prom. Tiempo</th>
               </tr>
             </thead>
