@@ -34,13 +34,13 @@ main {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     width: 90%;
     max-width: 800px;
-    max-height: 400px;
+    max-height: 600px;
     text-align: center;
     transition: transform 0.3s ease box-shadow 0.3s ease;
 }
 
 #container:hover {
-    transform: scale(1.05); 
+    transform: scale(1.02); 
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); 
 }
 
@@ -279,7 +279,7 @@ button:hover {
 
 /* Estilos para el ranking */
 #ranking-lista {
-    max-height: 150px;
+    max-height: 200px;
     overflow-y: auto;
     overflow-x: hidden;
 }
