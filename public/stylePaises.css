@@ -33,57 +33,16 @@ main {
     width: 90%;
     max-width: 600px;
     text-align: center;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease box-shadow 0.3s ease;
 }
 
 #container:hover {
-    transform: scale(1.01);
+    transform: scale(1.05);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
 }
 
-#puntaje {
-    display: none;
-}  
-
-#inicio-sec {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-#input-nombre {
-    width: 90%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 2px solid orangered;
-    border-radius: 6px;
-    font-family: Georgia, serif;
-    font-size: 1rem;
-}
-
-#botonIniciar {
-    display: block;
-    margin: 10px auto;
-}
-
-#pregunta-sec h2 {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-}
-
-#opciones {
-    margin-bottom: 20%;
-    display: flex;
-    justify-content: center; /* centra horizontalmente */
-    align-items: center;     /* opcional: centra verticalmente si hay altura */
-    gap: 16px;               /* opcional: espacio entre botones */
-    margin-top: 20px;        /* opcional */
-}
-
-#mensaje {
-    font-size: 1.2rem;
-    margin-top: 5px;
-    font-weight: bold;
+h2, h3, h4 {
+    color: #2c3e50;
 }
 
 button {
@@ -94,13 +53,11 @@ button {
     margin: 8px;
     border-radius: 8px;
     cursor: pointer;
-    font-family: Georgia, serif;
+    font-family: 'Nunito', sans-serif;
     font-size: 1rem;
     font-weight: bold;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s ease;
     width: 170px;
-    white-space: normal;
-
     /* Estas son las 3 líneas clave para igualar altura y centrar */
     height: 70px;
     display: flex;
@@ -111,7 +68,65 @@ button {
 
 button:hover {
     background-color: #3BC9D9;
-    color: white;
+    transform: scale(1.05);
+}
+
+#inicio-sec {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#input-nombre {
+    width: 90%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid orangered;
+    border-radius: 6px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+}
+
+#nombre-sec {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* animaciones prueba */
+#pregunta-sec, #resumen-sec, #ranking-sec {
+    animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#botonIniciar {
+    display: block;
+    margin: 10px auto;
+}
+
+/* #pregunta-sec h2 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+} */
+
+#opciones {
+    margin-bottom: 20%;
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    gap: 16px;               
+    margin-top: 20px;        
+}
+
+#mensaje {
+    font-size: 1.2rem;
+    margin-top: 5px;
+    font-weight: bold;
 }
 
 /* #ranking-sec {
@@ -120,33 +135,24 @@ button:hover {
 }
  */
 
-#resumen-sec {
+/* #resumen-sec {
     margin-top: 20px;
     font-weight: bold;
     font-size: 1.2rem;
     color: black;
 }
+    */
 
 #botonVolverRanking {
     display: block;
     margin: 10px auto;
-}
-
-footer {
-    padding: 10px 0;
-    text-align: center;
-    background-color: #ffce74;
-    color: white;
-    font-size: 0.9rem;
-    border-top: 2px solid orangered;
-    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
-}
+}  
 
 /* ESTILOS PARA EL RANKING */
 .ranking-table {
     width: 100%;
     border-collapse: collapse;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Nunito', sans-serif;
   }
   
   .ranking-table th, .ranking-table td {
@@ -172,3 +178,13 @@ footer {
     font-weight: bold;
     color: #2c3e50;
   }
+
+  footer {
+    padding: 10px 0;
+    text-align: center;
+    background-color: #ffce74;
+    color: white;
+    font-size: 0.9rem;
+    border-top: 2px solid orangered;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+}

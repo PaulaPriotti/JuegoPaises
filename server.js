@@ -52,6 +52,18 @@ app.get('/ranking', (req, res) => {
       return res.status(500).json({ error: 'No se pudo obtener el ranking' });
     }
     const partidas = JSON.parse(data);
+    //ver si podemos poner el promedio de tiempo en el ranking
+    partidas.forEach(partida => {
+      const tiempoTotal = parseFloat(partida.tiempo); // Tiempo en segundos
+      const numeroDePreguntas = partida.respuestasCorrectas + partida.respuestasIncorrectas; // Total de preguntas contestadas
+      if (numeroDePreguntas > 0 && !isNaN(tiempoTotal)) {
+        partida.promedioTiempo = (tiempoTotal / numeroDePreguntas).toFixed(2) + " seg"; // Calculamos el promedio de tiempo por pregunta
+      } else {
+        partida.promedioTiempo = '-'; // Si no hay preguntas contestadas, asignamos '-'
+      }
+    });
+
+
     const top20 = partidas
       .sort((a, b) => {
         if (b.puntaje === a.puntaje) {

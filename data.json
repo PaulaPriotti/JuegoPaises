@@ -30,5 +30,21 @@
     "correctas": 3,
     "incorrectas": 7,
     "promedioTiempo": 0
+  },
+  {
+    "nombre": "Joaquin",
+    "puntaje": 18,
+    "tiempo": 16,
+    "correctas": 4,
+    "incorrectas": 6,
+    "promedioTiempo": 0
+  },
+  {
+    "nombre": "Luisa",
+    "puntaje": 6,
+    "tiempo": 38,
+    "correctas": 2,
+    "incorrectas": 8,
+    "promedioTiempo": 0
   }
 ]

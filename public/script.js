@@ -167,7 +167,7 @@ function verificarRta(respuestaSeleccionada){
 function mostrarResumen() {
   preguntaSec.style.display = "none";
   const tiempoFinal = Math.floor((Date.now() - tiempoInicio) / 1000);
-  const promedioTiempo = (tiempoFinal / preguntasRespondidas).toFixed(2);
+  const promedioTiempo = preguntasRespondidas > 0 ? (tiempoFinal / preguntasRespondidas).toFixed(2) : '-';
   resumenSec.style.display = "block";
   resumenPuntaje.textContent = `Puntaje: ${puntaje}`;
   resumenTiempo.textContent = `Tiempo: ${tiempoFinal} segundos`;
