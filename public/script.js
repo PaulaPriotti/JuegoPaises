@@ -182,7 +182,7 @@ function mostrarResumen() {
   resumenPuntaje.textContent = `Puntaje: ${puntaje}`;
   resumenTiempo.textContent = `Tiempo: ${tiempoFinal} segundos`;
   resumenPromedioTiempo.textContent = `Promedio de tiempo por pregunta: ${promedioTiempo} segundos`;
-  resumenCorrectas.textContent = `Respuestas correctas: ${respuestasCorrectas}/10`;
+  resumenCorrectas.textContent = `Respuestas correctas: ${respuestasCorrectas}`;
   resumenIncorrectas.textContent = `Respuestas incorrectas: ${respuestasIncorrectas}`;
 
   botonVolver.style.display = "flex";
