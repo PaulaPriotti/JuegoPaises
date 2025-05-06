@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylePaises.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <title>Juego de paises</title>
 </head>
 <body>
@@ -13,15 +18,15 @@
         <div id="inicio-sec">
           <h2>Bienvenidos al juego de paises</h2>
           <h3>Son 10 preguntas sobre las capitales, fronteras y banderas de los paises. Recuerda que una vez iniciado el juego, comienza el cronometro. El ranking se realiza en base a la cantidad de respuestas contestadas en el menor tiempo posible.</h3>
-          <button id="botonComenzar">Comenzar</button>
-          <button id="botonRanking">Ver ranking</button>
+          <button id="botonComenzar">🎮 Comenzar</button>
+          <button id="botonRanking">🏆 Ver ranking</button>
         </div>
 
         <!-- Ingresar datos e inicar el juego -->
         <section id="nombre-sec" style="display: none;">
           <h4><label for="nombre">Nombre del jugador</label></h4>
           <input type="text" id="input-nombre" placeholder="Coloque su nombre para jugar"/>
-          <button id="botonIniciar">Iniciar juego</button>
+          <button id="botonIniciar">🏁 Inicio</button>
         </section>
 
         <!-- Preguntas y opciones -->
@@ -35,6 +40,7 @@
         <!-- Resumen de la partida -->
         <section id="resumen-sec" style="display: none;">
           <h2>¡Se ha terminado el juego!</h2>
+          <h3>✅ Resumen de la partida</h3>  
           <p id="resumen-puntaje"></p>
           <p id="resumen-correctas"></p>
           <p id="resumen-incorrectas"></p>
@@ -46,14 +52,27 @@
 
         <!-- Ranking -->
         <section id="ranking-sec" style="display: none;">
-          <h2>Ranking</h2>
-          <ul id="ranking-lista"></ul>
+          <h2>🥇 Ranking</h2>
+          <table id="ranking-tabla" class="ranking-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Puntaje</th>
+                <th>Correctas</th>
+                <th>Incorrectas</th>
+                <th>Tiempo (s)</th>
+                <th>Prom. Tiempo</th>
+              </tr>
+            </thead>
+            <tbody id="ranking-lista"></tbody>
+          </table>
           <button id="botonVolverRanking">Volver al inicio</button>
         </section>
       </div>
      </main>    
      <footer>
-        Paula Helena Gonzalez Priotti, 2025
+      👩‍💻 Paula Helena Gonzalez Priotti, 2025
      </footer>
 
      <script src="script.js"></script>

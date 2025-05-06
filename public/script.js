@@ -177,12 +177,19 @@ function mostrarResumen() {
 
   botonVolver.style.display = "flex";
   botonRankingFinal.style.display = "flex";
-  guardarPartida(nombreJugador, puntaje, tiempoFinal); // Guardar partida
+  guardarPartida(nombreJugador, puntaje, tiempoFinal, respuestasCorrectas, respuestasIncorrectas, promedioTiempo); // Guardar partida
   verRanking(); // Reiniciar preguntas
 };
 
-function guardarPartida(nombre, puntaje, tiempo) {
-  const partida = {nombre, puntaje, tiempo};
+function guardarPartida(nombre, puntaje, tiempo, correctas, incorrectas, promedioTiempo) {
+  const partida = {
+    nombre, 
+    puntaje, 
+    tiempo, 
+    correctas,
+    incorrectas,
+    promedioTiempo
+  };
   fetch('/guardarJuego', {
     method: 'POST',
     headers: {
@@ -212,22 +219,33 @@ botonRankingFinal.addEventListener("click", mostrarRanking);
 function verRanking() {
   botonComenzar.style.display = "none";
   botonRanking.style.display = "none";
-  fetch('/ranking')
+  fetch('https://juegodepaises.onrender.com/ranking')
     .then(res => res.json())
     .then(ranking => {
       rankingLista.innerHTML = "";
       if (!Array.isArray(ranking)) throw new Error("Ranking inválido");
-      ranking.forEach(item => {
+
+      ranking.forEach((item, index) => {
         if (item.nombre && item.puntaje !== undefined && item.tiempo !== undefined) {
-          const li = document.createElement("li");
-          li.textContent = `${item.nombre} - Puntaje: ${item.puntaje} - Tiempo: ${item.tiempo}s`;
-          rankingLista.appendChild(li);
+          const fila = document.createElement("tr");
+          fila.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${item.nombre}</td>
+            <td>${item.puntaje}</td>
+            <td>${item.correctas ?? '-'}</td>
+            <td>${item.incorrectas ?? '-'}</td>
+            <td>${item.tiempo}s</td>
+            <td>${item.promedioTiempo ? item.promedioTiempo + ' seg' : '-'}</td>
+          `;
+          rankingLista.appendChild(fila);
         }
       });
     })
     .catch(error => {
       console.error("Error al obtener el ranking:", error);
-      rankingLista.innerHTML = "<li>Error al cargar el ranking.</li>";
+      const filaError = document.createElement("tr");
+      filaError.innerHTML = `<td colspan="7">Error al cargar el ranking.</td>`;
+      rankingLista.appendChild(filaError);
     });
 }
 

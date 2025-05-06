@@ -1,17 +1,34 @@
 [
   {
     "nombre": "Paula",
-    "puntaje": 9,
-    "tiempo": 29
+    "puntaje": 15,
+    "tiempo": 15,
+    "correctas": 3,
+    "incorrectas": 7,
+    "promedioTiempo": "1.50"
   },
   {
-    "nombre": "Paula",
+    "nombre": "Joaquin",
     "puntaje": 3,
-    "tiempo": 14
+    "tiempo": 15,
+    "correctas": 1,
+    "incorrectas": 9,
+    "promedioTiempo": "1.50"
   },
   {
-    "nombre": "Anónimo",
-    "puntaje": 5,
-    "tiempo": 14
+    "nombre": "Paola",
+    "puntaje": 10,
+    "tiempo": 14,
+    "correctas": 2,
+    "incorrectas": 8,
+    "promedioTiempo": 0
+  },
+  {
+    "nombre": "Maria",
+    "puntaje": 13,
+    "tiempo": 25,
+    "correctas": 3,
+    "incorrectas": 7,
+    "promedioTiempo": 0
   }
 ]

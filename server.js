@@ -4,6 +4,8 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const app = express();
+const cors = require('cors');
+app.use(cors());
 const PORT = process.env.PORT || 3000;
 const dataPath = path.join(__dirname, 'data.json');
 
@@ -12,19 +14,25 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/guardarJuego', (req, res) => {
   const nuevaPartida = req.body;
+  if (typeof nuevaPartida.promedioTiempo !== 'number' || isNaN(nuevaPartida.promedioTiempo)) {
+    nuevaPartida.promedioTiempo = 0;  // O cualquier valor predeterminado
+  }
+
   fs.readFile(dataPath, 'utf8', (err, data) => {
     let partidas = [];
     if (!err && data) {
       partidas = JSON.parse(data);
     }
     partidas.push(nuevaPartida);
+
     fs.writeFile(dataPath, JSON.stringify(partidas, null, 2), err => {
       if (err) {
         console.error("Error al guardar la partida:", err);
         return res.status(500).json({ error: 'No se pudo guardar la partida' });
       }
       res.status(200).json({ mensaje: 'Partida guardada con éxito' });
-    });
+    
+    })
   });
 });
 
