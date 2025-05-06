@@ -22,8 +22,8 @@ let respuestasIncorrectas = 0;
 let preguntasRespondidas = 0;
 let tipoPreguntaActual = null;
 let respuestaCorrecta = ""; 
-// NUEVA VARIABLEEEEE
 let tiempoTranscurrido = 0;
+let intervaloCronometro;
 
 const botonComenzar = document.getElementById("botonComenzar");
 const nombreSec = document.getElementById("nombre-sec");
@@ -65,9 +65,9 @@ botonIniciar.addEventListener("click", () => {
   obtenerPregunta();
 
   cronometro.style.display = "block"; // Mostrar cronómetro
-  setInterval(() => {
-    tiempoTranscurrido = Math.floor((Date.now() - tiempoInicio) / 1000); // Tiempo en segundos
-    document.getElementById('tiempo-display').textContent = tiempoTranscurrido; // Mostrar tiempo
+  intervaloCronometro = setInterval(() => {
+    tiempoTranscurrido = Math.floor((Date.now() - tiempoInicio) / 1000);
+    document.getElementById('tiempo-display').textContent = tiempoTranscurrido;
   }, 1000);
 });
 
@@ -143,7 +143,6 @@ function obtenerPregunta() {
 
 function verificarRta(respuestaSeleccionada){
     preguntasRespondidas++;
-  
     if (respuestaSeleccionada === respuestaCorrecta) {
       mensaje.textContent = "¡Correcto!";
       mensaje.style.color = "green";
@@ -175,6 +174,8 @@ function verificarRta(respuestaSeleccionada){
 
 function mostrarResumen() {
   preguntaSec.style.display = "none";
+  cronometro.style.display = "none";
+  clearInterval(intervaloCronometro);
   const tiempoFinal = Math.floor((Date.now() - tiempoInicio) / 1000);
   const promedioTiempo = preguntasRespondidas > 0 ? (tiempoFinal / preguntasRespondidas).toFixed(2) : '-';
   resumenSec.style.display = "block";
