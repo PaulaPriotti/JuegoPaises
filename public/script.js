@@ -170,7 +170,7 @@ function verificarRta(respuestaSeleccionada){
     setTimeout(() => {
       mensaje.textContent = "";
       obtenerPregunta();
-    }, 1000);
+    }, 2000);
 }
 
 function mostrarResumen() {
