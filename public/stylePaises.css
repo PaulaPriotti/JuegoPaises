@@ -149,16 +149,32 @@ button:hover {
 }  
 
 /* ESTILOS PARA EL RANKING */
+#ranking-lista {
+    max-height: 200px;
+    overflow-y: auto;        /* Scroll solo vertical */
+    overflow-x: hidden;      /* Evita el scroll horizontal */
+}
+
 .ranking-table {
     width: 100%;
+    table-layout: fixed;
     border-collapse: collapse;
     font-family: 'Nunito', sans-serif;
 }
 
+.ranking-scroll {
+    max-height: 350px;  /* ajustá según tu preferencia */
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 10px 0;
+}
+
 .ranking-table th, .ranking-table td {
-    padding: 12px 16px;
+    padding: 8px;
     text-align: center;
     border-bottom: 1px solid #ddd;
+    word-wrap: break-word; /* permite que el texto largo se divida en varias líneas */
+    white-space: normal; 
 }
 
 .ranking-table thead {
@@ -178,9 +194,17 @@ button:hover {
     font-weight: bold;
     color: #2c3e50;
 }
-#ranking-lista {
-    max-height: 200px;
-    overflow-y: scroll;
+
+/* Hace la columna "Nombre" más ancha */
+.ranking-table th:nth-child(2),
+.ranking-table td:nth-child(2) {
+    width: 25%;  /* Ajustalo según el diseño */
+}
+
+/* Hace la columna "Prom. Tiempo" más ancha */
+.ranking-table th:last-child,
+.ranking-table td:last-child {
+    width: 20%; /* Podés subirlo a 25% si sigue quedando corto */
 }
 
 footer {
